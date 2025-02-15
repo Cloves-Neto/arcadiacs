@@ -1,4 +1,15 @@
 
+/**
+ * @component Footer
+ * @description Rodapé principal com informações de contato, links rápidos e redes sociais
+ * 
+ * Features:
+ * - Grid responsivo com 4 colunas
+ * - Links para redes sociais
+ * - Informações de contato
+ * - Links rápidos para seções
+ * - Efeitos decorativos de background
+ */
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
@@ -6,13 +17,14 @@ const Footer = () => {
 
   return (
     <footer className="bg-arcadia-dark text-arcadia-white relative overflow-hidden">
-      {/* Decorative Elements */}
+      {/* Efeitos decorativos */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-arcadia-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-arcadia-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4 py-16 relative">
+        {/* Grid principal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo and About */}
+          {/* Logo e Sobre */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <img 
@@ -27,7 +39,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Links Rápidos */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Links Rápidos</h3>
             <ul className="space-y-3">
@@ -44,7 +56,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Informações de Contato */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Contato</h3>
             <ul className="space-y-4">
@@ -65,7 +77,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Media */}
+          {/* Redes Sociais */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Redes Sociais</h3>
             <div className="flex space-x-4">
@@ -94,7 +106,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Barra inferior com copyright */}
         <div className="mt-16 pt-8 border-t border-arcadia-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-arcadia-light text-sm">

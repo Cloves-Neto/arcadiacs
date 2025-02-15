@@ -1,69 +1,121 @@
-# Welcome to your Lovable project
 
-## Project info
+# Arcadia - Website Institucional
 
-**URL**: https://lovable.dev/projects/5af92290-4a34-4a5b-b021-879af71db963
+## 🎨 Design System
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/5af92290-4a34-4a5b-b021-879af71db963) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Cores
+```css
+/* Cores Principais */
+--arcadia-primary: #C70039;   /* Vermelho - Ações principais, CTAs */
+--arcadia-dark: #151E47;      /* Azul Escuro - Menu, Backgrounds */
+--arcadia-secondary: #FF696A; /* Rosa - Destaques secundários */
+--arcadia-light: #FFF5E1;     /* Bege Claro - Textos suaves */
+--arcadia-white: #FFFFFF;     /* Branco - Textos e fundos claros */
 ```
 
-**Edit a file directly in GitHub**
+### Tipografia
+- **Títulos Principais**: 2.25rem/3rem (36px/48px)
+- **Subtítulos**: 1.5rem/2rem (24px/32px)
+- **Corpo de Texto**: 1rem (16px)
+- **Texto Pequeno**: 0.875rem (14px)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Espaçamento
+- **Container Máximo**: 1400px
+- **Padding Padrão**: 2rem (32px)
+- **Gap Grid**: 1.5rem (24px)
+- **Espaço entre Seções**: 6rem (96px)
 
-**Use GitHub Codespaces**
+## 🛠 Stack Tecnológica
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Core
+- **React 18** - Biblioteca UI
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
 
-## What technologies are used for this project?
+### Estilização
+- **Tailwind CSS** - Framework CSS utilitário
+- **Shadcn/ui** - Componentes base reutilizáveis
+- **Lucide Icons** - Biblioteca de ícones
 
-This project is built with .
+### Funcionalidades
+- **React Router** - Roteamento
+- **React Query** - Gerenciamento de estado e cache
+- **React Hook Form** - Gerenciamento de formulários
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📦 Estrutura de Componentes
 
-## How can I deploy this project?
+```
+src/
+├── components/          # Componentes reutilizáveis
+│   ├── ui/             # Componentes base (shadcn)
+│   ├── layout/         # Componentes de layout
+│   └── sections/       # Seções da página
+├── pages/              # Páginas da aplicação
+├── hooks/              # Hooks customizados
+├── lib/               # Utilidades e configurações
+└── styles/            # Estilos globais
+```
 
-Simply open [Lovable](https://lovable.dev/projects/5af92290-4a34-4a5b-b021-879af71db963) and click on Share -> Publish.
+## 🔍 Features Principais
 
-## I want to use a custom domain - is that possible?
+- Design responsivo e mobile-first
+- Animações suaves de scroll e interação
+- Menu de navegação com destaque da seção atual
+- Formulário de contato com validação
+- SEO otimizado
+- Performance otimizada
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## 🏗 Padrões de Código
+
+### Componentes
+- Componentes funcionais com TypeScript
+- Props tipadas e documentadas
+- Nomes descritivos e semânticos
+- Separação de responsabilidades
+
+### Estilização
+- Classes Tailwind organizadas por categoria
+- Reutilização de classes com @apply quando necessário
+- Variáveis CSS para cores e valores reutilizáveis
+
+### Boas Práticas
+- ESLint + Prettier para consistência de código
+- Commits semânticos
+- Documentação inline quando necessário
+- Princípios SOLID aplicados
+
+## 📱 Breakpoints Responsivos
+
+```css
+sm: '640px'
+md: '768px'
+lg: '1024px'
+xl: '1280px'
+2xl: '1400px'
+```
+
+## 🚀 Performance
+
+- Imagens otimizadas
+- Code splitting automático
+- Lazy loading de componentes pesados
+- Cache eficiente com React Query
+- Bundle size otimizado
+
+## 🔄 Manutenção
+
+Para adicionar novas features ou modificar existentes:
+
+1. Siga a estrutura de pastas existente
+2. Mantenha a consistência com o design system
+3. Documente mudanças significativas
+4. Teste em diferentes viewports
+5. Verifique a performance
+
+## 📈 Melhorias Futuras
+
+- [ ] Implementação de testes automatizados
+- [ ] Integração com CMS
+- [ ] PWA
+- [ ] Internacionalização
+- [ ] Analytics avançado

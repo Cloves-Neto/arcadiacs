@@ -1,11 +1,32 @@
 
+/**
+ * @component Navbar
+ * @description Barra de navegação principal com menu responsivo e highlight da seção atual
+ * 
+ * Features:
+ * - Menu responsivo com mobile toggle
+ * - Scroll tracking para highlight da seção atual
+ * - Backdrop blur em scroll
+ * - Animações suaves
+ */
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
+/** Interface para items do menu */
+interface MenuItem {
+  id: string;
+  label: string;
+}
+
 const Navbar = () => {
+  // Estado para controle de scroll e seção ativa
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+  /** 
+   * Hook para tracking de scroll e atualização da seção ativa
+   * Adiciona offset para melhor precisão
+   */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -32,6 +53,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** 
+   * Função para scroll suave até a seção selecionada
+   * @param sectionId - ID da seção destino
+   */
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -39,7 +64,8 @@ const Navbar = () => {
     }
   };
 
-  const menuItems = [
+  /** Array com items do menu para fácil manutenção */
+  const menuItems: MenuItem[] = [
     { id: "home", label: "HOME" },
     { id: "about", label: "SOBRE NÓS" },
     { id: "portfolio", label: "PORTFÓLIO" },
@@ -56,11 +82,17 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <a href="/" className="flex items-center space-x-2">
-            <img src="/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png" alt="Arcadia Logo" className="h-8" />
+            <img 
+              src="/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png" 
+              alt="Arcadia Logo" 
+              className="h-8" 
+            />
             <span className="text-xl font-bold text-arcadia-white">ARCADIA</span>
           </a>
           
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <button
@@ -77,10 +109,12 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* CTA Button */}
           <Button className="hidden md:flex bg-arcadia-primary hover:bg-arcadia-primary/90 text-arcadia-white font-medium rounded-full px-6">
             (11) 96527-9056
           </Button>
 
+          {/* Mobile Menu Toggle */}
           <button className="md:hidden text-arcadia-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />

@@ -163,10 +163,10 @@ const About = () => {
                           </div>
                           <span className="text-xl font-semibold">{item.title}</span>
                         </div>
-                        <ChevronDown className="w-6 h-6 transition-transform arrow rotate-180" />
+                        <ChevronDown className="w-6 h-6 transition-transform arrow" />
                       </button>
                     </dt>
-                    <dd className="px-6 pb-4 text-white/80 pl-[5.5rem]">
+                    <dd className="hidden px-6 pb-4 text-white/80 pl-[5.5rem]">
                       {item.description}
                     </dd>
                   </div>

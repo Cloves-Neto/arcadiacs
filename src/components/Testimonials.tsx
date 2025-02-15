@@ -9,7 +9,8 @@ const testimonials = [
     avatar: "/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png",
     rating: 5,
     text: "Experiência incrível! O site superou todas as expectativas e já estamos vendo resultados expressivos em conversões.",
-    position: "top-20 left-20"
+    position: "top-20 left-20",
+    animation: "animate-float-1"
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ const testimonials = [
     avatar: "/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png",
     rating: 5,
     text: "Design excepcional e performance impressionante. A equipe foi muito atenciosa durante todo o processo.",
-    position: "top-40 right-32"
+    position: "top-40 right-32",
+    animation: "animate-float-2"
   },
   {
     id: 3,
@@ -25,7 +27,8 @@ const testimonials = [
     avatar: "/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png",
     rating: 5,
     text: "O melhor investimento que fizemos para nossa empresa. O site ficou perfeito e a usabilidade é excelente.",
-    position: "bottom-32 left-40"
+    position: "bottom-32 left-40",
+    animation: "animate-float-3"
   }
 ];
 
@@ -48,7 +51,7 @@ const Testimonials = () => {
       {testimonials.map((testimonial) => (
         <div
           key={testimonial.id}
-          className={`absolute ${testimonial.position} z-20 group`}
+          className={`absolute ${testimonial.position} z-20 group ${testimonial.animation}`}
         >
           <div className="relative">
             {/* Floating bubble */}
@@ -56,7 +59,7 @@ const Testimonials = () => {
               <img
                 src={testimonial.avatar}
                 alt={testimonial.author}
-                className="w-full h-full object-cover animate-pulse"
+                className="w-full h-full object-cover"
               />
             </div>
 

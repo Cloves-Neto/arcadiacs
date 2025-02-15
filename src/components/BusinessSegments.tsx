@@ -1,66 +1,84 @@
 
-import { Building2, Hospital, Store, Scissors, ShoppingBag, PartyPopper, UtensilsCrossed, Dumbbell, Camera, Users, Home, ShoppingCart } from "lucide-react";
+import { Building2, Hospital, Store, Scissors, ShoppingBag, PartyPopper, UtensilsCrossed, Dumbbell, Camera, Users, Home, ShoppingCart, MoreHorizontal } from "lucide-react";
 
 const segments = [
   {
     icon: <Building2 className="w-6 h-6" />,
     title: "Advocacia",
-    color: "from-blue-500/20 to-blue-600/20"
+    color: "from-blue-500/20 to-blue-600/20",
+    description: "Sites jurídicos com design profissional e integração com sistemas legais."
   },
   {
     icon: <Hospital className="w-6 h-6" />,
     title: "Clínica",
-    color: "from-green-500/20 to-green-600/20"
+    color: "from-green-500/20 to-green-600/20",
+    description: "Plataformas médicas com agendamento online e gestão de pacientes."
   },
   {
     icon: <Store className="w-6 h-6" />,
     title: "Agência",
-    color: "from-purple-500/20 to-purple-600/20"
+    color: "from-purple-500/20 to-purple-600/20",
+    description: "Websites modernos para agências com portfólio interativo."
   },
   {
     icon: <Scissors className="w-6 h-6" />,
     title: "Salão",
-    color: "from-pink-500/20 to-pink-600/20"
+    color: "from-pink-500/20 to-pink-600/20",
+    description: "Sistemas de beleza com agendamento e gestão de clientes."
   },
   {
     icon: <ShoppingBag className="w-6 h-6" />,
     title: "Loja",
-    color: "from-orange-500/20 to-orange-600/20"
+    color: "from-orange-500/20 to-orange-600/20",
+    description: "E-commerce completo com gestão de produtos e vendas."
   },
   {
     icon: <PartyPopper className="w-6 h-6" />,
     title: "Eventos",
-    color: "from-red-500/20 to-red-600/20"
+    color: "from-red-500/20 to-red-600/20",
+    description: "Plataformas de eventos com venda de ingressos online."
   },
   {
     icon: <UtensilsCrossed className="w-6 h-6" />,
     title: "Buffet",
-    color: "from-yellow-500/20 to-yellow-600/20"
+    color: "from-yellow-500/20 to-yellow-600/20",
+    description: "Sites para buffet com galeria e sistema de orçamentos."
   },
   {
     icon: <Dumbbell className="w-6 h-6" />,
     title: "Academia",
-    color: "from-lime-500/20 to-lime-600/20"
+    color: "from-lime-500/20 to-lime-600/20",
+    description: "Plataformas fitness com área do aluno e treinos online."
   },
   {
     icon: <Camera className="w-6 h-6" />,
     title: "Estúdio",
-    color: "from-teal-500/20 to-teal-600/20"
+    color: "from-teal-500/20 to-teal-600/20",
+    description: "Portfólios fotográficos com galerias dinâmicas."
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Influencer",
-    color: "from-cyan-500/20 to-cyan-600/20"
+    color: "from-cyan-500/20 to-cyan-600/20",
+    description: "Sites para influenciadores com integração às redes sociais."
   },
   {
     icon: <Home className="w-6 h-6" />,
     title: "Imobiliária",
-    color: "from-indigo-500/20 to-indigo-600/20"
+    color: "from-indigo-500/20 to-indigo-600/20",
+    description: "Portais imobiliários com busca avançada de imóveis."
   },
   {
     icon: <ShoppingCart className="w-6 h-6" />,
     title: "Comércio",
-    color: "from-violet-500/20 to-violet-600/20"
+    color: "from-violet-500/20 to-violet-600/20",
+    description: "Lojas virtuais completas com gestão de vendas."
+  },
+  {
+    icon: <MoreHorizontal className="w-6 h-6" />,
+    title: "Outros",
+    color: "from-arcadia-primary/20 to-arcadia-secondary/20",
+    description: "Tem uma ideia diferente? Entre em contato e vamos criar algo único!"
   }
 ];
 
@@ -92,16 +110,29 @@ const BusinessSegments = () => {
           {segments.map((segment, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden"
+              className="group h-[200px] perspective-1000"
             >
-              <div className={`bg-gradient-to-br ${segment.color} rounded-lg p-6 h-full transition-all duration-300 group-hover:scale-105`}>
-                <div className="flex flex-col items-center justify-center gap-4 text-white">
-                  <div className="p-3 bg-white/10 rounded-lg">
-                    {segment.icon}
+              {/* Card Container */}
+              <div className="relative h-full w-full transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
+                {/* Front of card */}
+                <div className={`absolute inset-0 backface-hidden bg-gradient-to-br ${segment.color} rounded-lg p-6`}>
+                  <div className="flex flex-col items-center justify-center gap-4 text-white h-full">
+                    <div className="p-3 bg-white/10 rounded-lg">
+                      {segment.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg text-center">
+                      {segment.title}
+                    </h3>
                   </div>
-                  <h3 className="font-semibold text-lg text-center">
-                    {segment.title}
-                  </h3>
+                </div>
+                
+                {/* Back of card */}
+                <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br ${segment.color} rounded-lg p-6`}>
+                  <div className="flex flex-col items-center justify-center text-white h-full text-center">
+                    <p className="text-sm leading-relaxed">
+                      {segment.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

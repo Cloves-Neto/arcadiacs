@@ -61,6 +61,18 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      rotate: {
+        'y-180': '180deg',
+      },
+      perspective: {
+        '1000': '1000px',
+      },
+      backfaceVisibility: {
+        'hidden': 'hidden',
+      },
+      transformStyle: {
+        'preserve-3d': 'preserve-3d',
+      },
       keyframes: {
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },

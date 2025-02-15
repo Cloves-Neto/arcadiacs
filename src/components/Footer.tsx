@@ -5,9 +5,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-arcadia-dark text-white relative overflow-hidden">
+    <footer className="bg-arcadia-dark text-arcadia-white relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-arcadia-primary/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-arcadia-secondary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-arcadia-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4 py-16 relative">
@@ -22,7 +22,7 @@ const Footer = () => {
               />
               <span className="text-2xl font-bold">ARCADIA</span>
             </div>
-            <p className="text-white/80 max-w-xs">
+            <p className="text-arcadia-light max-w-xs">
               Transformando ideias em experiências digitais memoráveis através de soluções web inovadoras.
             </p>
           </div>
@@ -35,7 +35,7 @@ const Footer = () => {
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-white/70 hover:text-arcadia-primary transition-colors"
+                    className="text-arcadia-light hover:text-arcadia-secondary transition-colors"
                   >
                     {item}
                   </a>
@@ -50,17 +50,17 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-arcadia-primary flex-shrink-0 mt-1" />
-                <span className="text-white/70">
+                <span className="text-arcadia-light">
                   São Paulo, SP
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-arcadia-primary flex-shrink-0" />
-                <span className="text-white/70">(11) 96527-9056</span>
+                <span className="text-arcadia-light">(11) 96527-9056</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-arcadia-primary flex-shrink-0" />
-                <span className="text-white/70">contato@arcadia.com.br</span>
+                <span className="text-arcadia-light">contato@arcadia.com.br</span>
               </li>
             </ul>
           </div>
@@ -71,21 +71,21 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
+                className="w-10 h-10 rounded-full bg-arcadia-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
+                className="w-10 h-10 rounded-full bg-arcadia-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
+                className="w-10 h-10 rounded-full bg-arcadia-white/10 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
@@ -95,14 +95,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10">
+        <div className="mt-16 pt-8 border-t border-arcadia-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-white/60 text-sm">
+            <p className="text-arcadia-light text-sm">
               © {currentYear} Arcadia. Todos os direitos reservados.
             </p>
-            <div className="flex space-x-6 text-sm text-white/60">
-              <a href="#" className="hover:text-white transition-colors">Política de Privacidade</a>
-              <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+            <div className="flex space-x-6 text-sm text-arcadia-light">
+              <a href="#" className="hover:text-arcadia-white transition-colors">Política de Privacidade</a>
+              <a href="#" className="hover:text-arcadia-white transition-colors">Termos de Uso</a>
             </div>
           </div>
         </div>

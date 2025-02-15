@@ -26,10 +26,11 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         arcadia: {
-          bg: "#D9D9D9",
-          primary: "#ea384c",
-          dark: "#1A1F2C",
-          light: "#F5F5F5",
+          primary: "#C70039",
+          dark: "#151E47",
+          secondary: "#FF696A",
+          light: "#FFF5E1",
+          white: "#FFFFFF",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

@@ -1,5 +1,4 @@
-
-import { Target, Fingerprint, Award, Smartphone, Search, LayoutDashboard, Focus, ChevronDown } from "lucide-react";
+import { Target, Fingerprint, Award, Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
 
 const differentials = [
   {
@@ -128,7 +127,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Differentials Section with Datalist */}
+      {/* Differentials Section */}
       <div className="container mx-auto px-4 mt-32">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left side - Image placeholder */}
@@ -140,38 +139,27 @@ const About = () => {
               Nossos Sites Possuem
             </h2>
 
-            <div className="space-y-4">
-              <dl className="space-y-4">
-                {differentials.map((item, index) => (
-                  <div key={index} className="bg-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:bg-white/10">
-                    <dt>
-                      <button 
-                        className="w-full px-6 py-4 flex items-center justify-between text-white group"
-                        onClick={(e) => {
-                          const details = e.currentTarget.nextElementSibling;
-                          if (details) {
-                            details.classList.toggle('hidden');
-                          }
-                          e.currentTarget.querySelector('.arrow')?.classList.toggle('rotate-180');
-                        }}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full bg-arcadia-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-arcadia-primary/20 transition-colors">
-                            <span className="text-arcadia-primary">
-                              {item.icon}
-                            </span>
-                          </div>
-                          <span className="text-xl font-semibold">{item.title}</span>
-                        </div>
-                        <ChevronDown className="w-6 h-6 transition-transform arrow" />
-                      </button>
-                    </dt>
-                    <dd className="hidden px-6 pb-4 text-white/80 pl-[5.5rem]">
-                      {item.description}
-                    </dd>
+            <div className="space-y-8">
+              {differentials.map((item, index) => (
+                <div key={index} className="flex gap-4 items-start group">
+                  <div className="w-12 h-12 rounded-full bg-arcadia-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-arcadia-primary/20 transition-colors">
+                    <span className="text-arcadia-primary">
+                      {item.icon}
+                    </span>
                   </div>
-                ))}
-              </dl>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/80 leading-relaxed">
+                      {item.description}
+                    </p>
+                    {index < differentials.length - 1 && (
+                      <div className="border-b border-white/10 mt-6"></div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

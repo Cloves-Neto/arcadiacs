@@ -4,14 +4,49 @@ import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Get all sections
+      const sections = document.querySelectorAll("section");
+      const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.id;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(sectionId);
+        }
+      });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const menuItems = [
+    { id: "home", label: "HOME" },
+    { id: "about", label: "SOBRE NÓS" },
+    { id: "portfolio", label: "PORTFÓLIO" },
+    { id: "segments", label: "SEGMENTOS" },
+    { id: "testimonials", label: "DEPOIMENTOS" },
+    { id: "contact", label: "CONTATO" },
+  ];
 
   return (
     <nav
@@ -27,10 +62,19 @@ const Navbar = () => {
           </a>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-arcadia-dark hover:text-arcadia-primary transition-colors">HOME</a>
-            <a href="#" className="text-arcadia-dark hover:text-arcadia-primary transition-colors">SOBRE NÓS</a>
-            <a href="#" className="text-arcadia-dark hover:text-arcadia-primary transition-colors">SERVIÇOS</a>
-            <a href="#" className="text-arcadia-dark hover:text-arcadia-primary transition-colors">ORÇAMENTO</a>
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`text-arcadia-dark hover:text-arcadia-primary transition-colors ${
+                  activeSection === item.id
+                    ? "text-arcadia-primary font-bold"
+                    : ""
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
           <Button className="hidden md:flex bg-arcadia-primary hover:bg-arcadia-primary/90 text-white font-medium rounded-full px-6">

@@ -12,22 +12,22 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <section id="home">
+      <section id="home" className="bg-arcadia-dark">
         <Hero />
       </section>
-      <section id="about">
+      <section id="about" className="bg-arcadia-white">
         <About />
       </section>
-      <section id="portfolio">
+      <section id="portfolio" className="bg-arcadia-primary">
         <Portfolio />
       </section>
-      <section id="segments">
+      <section id="segments" className="bg-arcadia-white">
         <BusinessSegments />
       </section>
-      <section id="testimonials">
+      <section id="testimonials" className="bg-arcadia-dark">
         <Testimonials />
       </section>
-      <section id="contact">
+      <section id="contact" className="bg-arcadia-primary">
         <ContactForm />
       </section>
       <Footer />

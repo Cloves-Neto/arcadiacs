@@ -6,6 +6,7 @@ import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
 import BusinessSegments from "@/components/BusinessSegments";
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -29,6 +30,7 @@ const Index = () => {
       <section id="contact">
         <ContactForm />
       </section>
+      <Footer />
     </main>
   );
 };

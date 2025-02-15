@@ -1,5 +1,27 @@
+import { Target, Fingerprint, Award, Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
 
-import { Target, Fingerprint, Award } from "lucide-react";
+const differentials = [
+  {
+    icon: <Smartphone className="w-6 h-6" />,
+    title: "Otimização para Dispositivos Móveis",
+    description: "Sites responsivos e adaptados para diferentes telas, proporcionando uma experiência impecável em qualquer dispositivo."
+  },
+  {
+    icon: <Search className="w-6 h-6" />,
+    title: "SEO Integrado para Melhor Visibilidade",
+    description: "Estrutura do site otimizada para motores de busca, aumentando o alcance e atraindo visitantes."
+  },
+  {
+    icon: <LayoutDashboard className="w-6 h-6" />,
+    title: "Experiência de Navegação Intuitiva",
+    description: "Layouts pensados para facilitar a navegação e converter visitantes em clientes."
+  },
+  {
+    icon: <Focus className="w-6 h-6" />,
+    title: "Foco em Conversão e Usabilidade",
+    description: "Design e estrutura voltados para aumentar a taxa de conversão e facilitar a jornada do cliente."
+  }
+];
 
 const About = () => {
   return (
@@ -100,6 +122,44 @@ const About = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Differentials Section */}
+      <div className="container mx-auto px-4 mt-32">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          {/* Left side - Image placeholder */}
+          <div className="bg-white/5 rounded-lg aspect-square"></div>
+
+          {/* Right side - Differentials */}
+          <div className="space-y-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 inline-block bg-arcadia-primary px-6 py-3 rounded-lg">
+              Nossos Sites Possuem
+            </h2>
+
+            <div className="space-y-8">
+              {differentials.map((item, index) => (
+                <div key={index} className="flex gap-4 items-start group">
+                  <div className="w-12 h-12 rounded-full bg-arcadia-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-arcadia-primary/20 transition-colors">
+                    <span className="text-arcadia-primary">
+                      {item.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/80 leading-relaxed">
+                      {item.description}
+                    </p>
+                    {index < differentials.length - 1 && (
+                      <div className="border-b border-white/10 mt-6"></div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

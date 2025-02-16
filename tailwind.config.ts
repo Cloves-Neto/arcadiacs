@@ -70,9 +70,9 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "rotate": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        "spin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },
@@ -109,7 +109,6 @@ export default {
         "float-1": "float-1 8s ease-in-out infinite",
         "float-2": "float-2 12s ease-in-out infinite",
         "float-3": "float-3 10s ease-in-out infinite",
-        "rotate": "rotate 20s linear infinite",
       },
     },
   },

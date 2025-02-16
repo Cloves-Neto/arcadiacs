@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Star } from "lucide-react";
 
@@ -64,27 +65,25 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Testimonials wheel */}
-        {testimonials.map((testimonial, index) => {
-          const angle = (index * 90) % 360; // 90 degrees spacing between cards
-          return (
-            <div
-              key={testimonial.id}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              style={{
-                animation: "rotate 20s linear infinite",
-                transform: `rotate(${angle}deg) translateY(-150px)`, // Move cards up from center
-              }}
-            >
-              {/* Card container with counter-rotation to keep cards upright */}
+        {/* Rotating wheel */}
+        <div className="absolute w-full h-full animate-[spin_20s_linear_infinite]">
+          {/* Testimonials wheel */}
+          {testimonials.map((testimonial, index) => {
+            const angle = (index * 90); // 90 degrees spacing between cards
+            const radius = 300; // Distance from center
+            const x = radius * Math.cos((angle * Math.PI) / 180);
+            const y = radius * Math.sin((angle * Math.PI) / 180);
+
+            return (
               <div
-                className="relative"
+                key={testimonial.id}
+                className="absolute top-1/2 left-1/2"
                 style={{
-                  transform: `rotate(-${angle}deg)`, // Counter-rotate to keep content upright
+                  transform: `translate(${x}px, ${y}px) rotate(-${angle}deg)`,
                 }}
               >
                 {/* Testimonial card */}
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 w-[280px] shadow-xl hover:scale-105 transition-transform">
+                <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 w-[280px] shadow-xl hover:scale-105 transition-transform -translate-x-1/2 -translate-y-1/2">
                   <div className="flex gap-3">
                     <img
                       src={testimonial.avatar}
@@ -105,9 +104,9 @@ const Testimonials = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

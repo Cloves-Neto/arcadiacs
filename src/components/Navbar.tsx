@@ -1,18 +1,7 @@
 
-/**
- * @component Navbar
- * @description Barra de navegação principal com menu responsivo e highlight da seção atual
- * 
- * Features:
- * - Menu responsivo com mobile toggle
- * - Scroll tracking para highlight da seção atual
- * - Backdrop blur em scroll
- * - Animações suaves
- */
 import { useState, useEffect } from "react";
 import { Home, Info, Image, LayoutGrid, MessageSquare, Phone } from "lucide-react";
 
-/** Interface para items do menu */
 interface MenuItem {
   id: string;
   label: string;
@@ -66,20 +55,26 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-arcadia-dark/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "bg-arcadia-dark/95 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-8"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png" 
               alt="Arcadia Logo" 
-              className="h-8" 
+              className={`transition-all duration-500 ${
+                isScrolled ? "h-8" : "h-16"
+              }`}
             />
-            <span className="text-xl font-bold text-arcadia-white">ARCADIA</span>
+            <span className={`font-bold text-arcadia-white transition-all duration-500 ${
+              isScrolled ? "text-xl" : "text-3xl"
+            }`}>
+              ARCADIA
+            </span>
           </a>
           
           {/* Desktop Menu */}
@@ -88,10 +83,10 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex items-center text-sm font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-colors ${
-                  activeSection === item.id
-                    ? "text-arcadia-secondary"
-                    : ""
+                className={`flex items-center font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-all duration-500 ${
+                  activeSection === item.id ? "text-arcadia-secondary" : ""
+                } ${
+                  isScrolled ? "text-sm" : "text-base"
                 }`}
               >
                 {item.icon}

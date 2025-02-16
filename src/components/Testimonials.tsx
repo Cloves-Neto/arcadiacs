@@ -10,7 +10,8 @@ const testimonials = [
     rating: 5,
     text: "Experiência incrível! O site superou todas as expectativas e já estamos vendo resultados expressivos em conversões.",
     position: "top-10 left-20",
-    animation: "animate-float-1"
+    animation: "animate-float-1",
+    rotate: "rotate-6"
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const testimonials = [
     rating: 5,
     text: "Design excepcional e performance impressionante. A equipe foi muito atenciosa durante todo o processo.",
     position: "top-32 right-40",
-    animation: "animate-float-2"
+    animation: "animate-float-2",
+    rotate: "-rotate-3"
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ const testimonials = [
     rating: 5,
     text: "O melhor investimento que fizemos para nossa empresa. O site ficou perfeito e a usabilidade é excelente.",
     position: "bottom-40 left-32",
-    animation: "animate-float-3"
+    animation: "animate-float-3",
+    rotate: "rotate-3"
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ const testimonials = [
     rating: 5,
     text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
     position: "bottom-20 right-20",
-    animation: "animate-float-2"
+    animation: "animate-float-2",
+    rotate: "-rotate-6"
   }
 ];
 
@@ -48,6 +52,18 @@ const Testimonials = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute w-[800px] h-[800px] rounded-full bg-arcadia-primary/5 blur-3xl 
                       top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+      </div>
+
+      {/* Title centralized */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 max-w-2xl text-center z-30">
+        <h2 className="text-4xl md:text-5xl font-bold">
+          <span className="text-white">O QUE</span>
+          <span className="block bg-[#FF6B6C] text-white px-6 py-2 my-4">
+            TODO MUNDO
+          </span>
+          <span className="text-white">ESTÁ FALANDO</span>
+          <span className="block text-white">SOBRE NÓS?</span>
+        </h2>
       </div>
 
       {/* Center content */}
@@ -70,9 +86,9 @@ const Testimonials = () => {
           key={testimonial.id}
           className={`absolute ${testimonial.position} z-20 group ${testimonial.animation}`}
         >
-          <div className="relative">
+          <div className={`relative transform ${testimonial.rotate} transition-transform duration-500 hover:scale-105 perspective-1000`}>
             {/* Floating bubble */}
-            <div className="bg-white rounded-lg p-4 shadow-lg max-w-[280px]">
+            <div className="bg-white rounded-lg p-4 shadow-lg max-w-[280px] transform hover:-translate-y-1 transition-all duration-300 hover:shadow-xl">
               <div className="flex gap-3 items-start">
                 <img
                   src={testimonial.avatar}
@@ -94,18 +110,6 @@ const Testimonials = () => {
           </div>
         </div>
       ))}
-
-      {/* Title */}
-      <div className="absolute top-20 right-20 max-w-lg text-right z-30">
-        <h2 className="text-4xl md:text-5xl font-bold">
-          <span className="text-white">O QUE</span>
-          <span className="block bg-[#FF6B6C] text-white px-6 py-2 my-4">
-            TODO MUNDO
-          </span>
-          <span className="text-white">ESTÁ FALANDO</span>
-          <span className="block text-white">SOBRE NÓS?</span>
-        </h2>
-      </div>
     </section>
   );
 };

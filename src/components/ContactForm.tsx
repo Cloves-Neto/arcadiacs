@@ -161,7 +161,7 @@ const ContactForm = () => {
                   <div>
                     <Button
                       type="submit"
-                      className="bg-[#517B7B] hover:bg-[#517B7B]/90 text-white px-8 py-6 rounded-full w-40"
+                      className="bg-arcadia-primary hover:bg-arcadia-primary/90 text-white px-8 py-6 rounded-full w-40"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -176,7 +176,7 @@ const ContactForm = () => {
             </div>
 
             {/* Newsletter Section */}
-            <div className="bg-[#517B7B] rounded-3xl p-8 text-white h-fit">
+            <div className="bg-arcadia-primary rounded-3xl p-8 text-white h-fit">
               <h3 className="text-2xl font-bold mb-4">Nossa Newsletter</h3>
               <p className="text-white/80 mb-6">
                 Fique por dentro das últimas novidades, dicas e tendências do mundo digital.
@@ -205,7 +205,7 @@ const ContactForm = () => {
 
                   <Button
                     type="submit"
-                    className="w-full bg-[#1A2C2C] hover:bg-[#1A2C2C]/90 text-white h-12"
+                    className="w-full bg-arcadia-dark hover:bg-arcadia-dark/90 text-white h-12"
                     disabled={isNewsletterSubmitting}
                   >
                     {isNewsletterSubmitting ? "Inscrevendo..." : "Inscrever"}

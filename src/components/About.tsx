@@ -1,23 +1,24 @@
+
 import { Target, Fingerprint, Award, Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
 
 const differentials = [
   {
-    icon: <Smartphone className="w-6 h-6" />,
+    icon: <Smartphone className="w-8 h-8" />,
     title: "Otimização para Dispositivos Móveis",
     description: "Sites responsivos e adaptados para diferentes telas, proporcionando uma experiência impecável em qualquer dispositivo."
   },
   {
-    icon: <Search className="w-6 h-6" />,
+    icon: <Search className="w-8 h-8" />,
     title: "SEO Integrado para Melhor Visibilidade",
     description: "Estrutura do site otimizada para motores de busca, aumentando o alcance e atraindo visitantes."
   },
   {
-    icon: <LayoutDashboard className="w-6 h-6" />,
+    icon: <LayoutDashboard className="w-8 h-8" />,
     title: "Experiência de Navegação Intuitiva",
     description: "Layouts pensados para facilitar a navegação e converter visitantes em clientes."
   },
   {
-    icon: <Focus className="w-6 h-6" />,
+    icon: <Focus className="w-8 h-8" />,
     title: "Foco em Conversão e Usabilidade",
     description: "Design e estrutura voltados para aumentar a taxa de conversão e facilitar a jornada do cliente."
   }
@@ -57,11 +58,11 @@ const About = () => {
           <div className="group h-[300px] [perspective:1000px]">
             <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               {/* Front side */}
-              <div className="absolute inset-0 bg-white rounded-lg p-8 text-center [backface-visibility:hidden]">
-                <div className="w-16 h-16 bg-arcadia-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-8 h-8 text-arcadia-primary" />
+              <div className="absolute inset-0 bg-white rounded-lg p-8 flex flex-col items-center justify-center [backface-visibility:hidden]">
+                <div className="w-20 h-20 bg-arcadia-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <Target className="w-12 h-12 text-arcadia-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-arcadia-dark mb-4">Missão</h3>
+                <h3 className="text-2xl font-bold text-arcadia-dark">Missão</h3>
               </div>
               
               {/* Back side */}
@@ -81,11 +82,11 @@ const About = () => {
           <div className="group h-[300px] [perspective:1000px]">
             <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               {/* Front side */}
-              <div className="absolute inset-0 bg-white rounded-lg p-8 text-center [backface-visibility:hidden]">
-                <div className="w-16 h-16 bg-arcadia-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Fingerprint className="w-8 h-8 text-arcadia-primary" />
+              <div className="absolute inset-0 bg-white rounded-lg p-8 flex flex-col items-center justify-center [backface-visibility:hidden]">
+                <div className="w-20 h-20 bg-arcadia-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <Fingerprint className="w-12 h-12 text-arcadia-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-arcadia-dark mb-4">Valores</h3>
+                <h3 className="text-2xl font-bold text-arcadia-dark">Valores</h3>
               </div>
               
               {/* Back side */}
@@ -105,11 +106,11 @@ const About = () => {
           <div className="group h-[300px] [perspective:1000px]">
             <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               {/* Front side */}
-              <div className="absolute inset-0 bg-white rounded-lg p-8 text-center [backface-visibility:hidden]">
-                <div className="w-16 h-16 bg-arcadia-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Award className="w-8 h-8 text-arcadia-primary" />
+              <div className="absolute inset-0 bg-white rounded-lg p-8 flex flex-col items-center justify-center [backface-visibility:hidden]">
+                <div className="w-20 h-20 bg-arcadia-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <Award className="w-12 h-12 text-arcadia-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-arcadia-dark mb-4">Diferenciais</h3>
+                <h3 className="text-2xl font-bold text-arcadia-dark">Diferenciais</h3>
               </div>
               
               {/* Back side */}

@@ -145,7 +145,7 @@ const BusinessSegments = () => {
                 </div>
                 
                 {/* Back of card */}
-                <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br ${segment.color} rounded-lg p-6 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300`}>
+                <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br ${segment.color} rounded-lg p-6 cursor-pointer`}>
                   <div className="flex flex-col items-center justify-center text-white h-full text-center">
                     <p className="text-sm leading-relaxed">
                       {segment.description}

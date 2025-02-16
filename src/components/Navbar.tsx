@@ -9,31 +9,26 @@
  * - Backdrop blur em scroll
  * - Animações suaves
  */
-import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { Home, Info, Image, LayoutGrid, MessageSquare, Phone } from "lucide-react";
 
 /** Interface para items do menu */
 interface MenuItem {
   id: string;
   label: string;
+  icon: JSX.Element;
 }
 
 const Navbar = () => {
-  // Estado para controle de scroll e seção ativa
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  /** 
-   * Hook para tracking de scroll e atualização da seção ativa
-   * Adiciona offset para melhor precisão
-   */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Get all sections
       const sections = document.querySelectorAll("section");
-      const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+      const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -53,10 +48,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /** 
-   * Função para scroll suave até a seção selecionada
-   * @param sectionId - ID da seção destino
-   */
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -64,14 +55,13 @@ const Navbar = () => {
     }
   };
 
-  /** Array com items do menu para fácil manutenção */
   const menuItems: MenuItem[] = [
-    { id: "home", label: "HOME" },
-    { id: "about", label: "SOBRE NÓS" },
-    { id: "portfolio", label: "PORTFÓLIO" },
-    { id: "segments", label: "SEGMENTOS" },
-    { id: "testimonials", label: "DEPOIMENTOS" },
-    { id: "contact", label: "CONTATO" },
+    { id: "home", label: "Home", icon: <Home className="w-4 h-4 mr-2" /> },
+    { id: "about", label: "Sobre Nós", icon: <Info className="w-4 h-4 mr-2" /> },
+    { id: "portfolio", label: "Portfólio", icon: <Image className="w-4 h-4 mr-2" /> },
+    { id: "segments", label: "Segmentos", icon: <LayoutGrid className="w-4 h-4 mr-2" /> },
+    { id: "testimonials", label: "Depoimentos", icon: <MessageSquare className="w-4 h-4 mr-2" /> },
+    { id: "contact", label: "Contato", icon: <Phone className="w-4 h-4 mr-2" /> },
   ];
 
   return (
@@ -93,26 +83,22 @@ const Navbar = () => {
           </a>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-arcadia-white hover:text-arcadia-secondary transition-colors ${
+                className={`flex items-center text-sm font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-colors ${
                   activeSection === item.id
-                    ? "text-arcadia-secondary font-bold"
+                    ? "text-arcadia-secondary"
                     : ""
                 }`}
               >
+                {item.icon}
                 {item.label}
               </button>
             ))}
           </div>
-
-          {/* CTA Button */}
-          <Button className="hidden md:flex bg-arcadia-primary hover:bg-arcadia-primary/90 text-arcadia-white font-medium rounded-full px-6">
-            (11) 96527-9056
-          </Button>
 
           {/* Mobile Menu Toggle */}
           <button className="md:hidden text-arcadia-white">

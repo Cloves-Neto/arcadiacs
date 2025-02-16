@@ -1,5 +1,5 @@
 
-import { Building2, Hospital, Store, Scissors, ShoppingBag, PartyPopper, UtensilsCrossed, Dumbbell, Camera, Users, Home, ShoppingCart, MoreHorizontal } from "lucide-react";
+import { Building2, Hospital, Store, Scissors, ShoppingBag, PartyPopper, UtensilsCrossed, Dumbbell, Camera, Users, Home, ShoppingCart, MoreHorizontal, Image, Leaf, Gamepad } from "lucide-react";
 
 const segments = [
   {
@@ -19,6 +19,24 @@ const segments = [
     title: "Agência",
     color: "from-purple-500/20 to-purple-600/20",
     description: "Websites modernos para agências com portfólio interativo."
+  },
+  {
+    icon: <Image className="w-6 h-6" />,
+    title: "Portfolio",
+    color: "from-blue-400/20 to-blue-500/20",
+    description: "Sites profissionais para exibir seus trabalhos e projetos de forma elegante."
+  },
+  {
+    icon: <Leaf className="w-6 h-6" />,
+    title: "Jardinagem",
+    color: "from-emerald-500/20 to-emerald-600/20",
+    description: "Websites para paisagistas e serviços de jardinagem com galeria de projetos."
+  },
+  {
+    icon: <Gamepad className="w-6 h-6" />,
+    title: "Games",
+    color: "from-purple-400/20 to-purple-500/20",
+    description: "Plataformas para gamers, streamers e desenvolvedores de jogos."
   },
   {
     icon: <Scissors className="w-6 h-6" />,

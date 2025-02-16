@@ -22,14 +22,19 @@ type FormData = {
   message: string;
 };
 
+type NewsletterData = {
+  email: string;
+};
+
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const form = useForm<FormData>();
+  const newsletterForm = useForm<NewsletterData>();
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("Form data:", data);
       toast.success("Mensagem enviada com sucesso!");
@@ -41,6 +46,20 @@ const ContactForm = () => {
     }
   };
 
+  const onNewsletterSubmit = async (data: NewsletterData) => {
+    setIsNewsletterSubmitting(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("Newsletter data:", data);
+      toast.success("Inscrição realizada com sucesso!");
+      newsletterForm.reset();
+    } catch (error) {
+      toast.error("Erro ao realizar inscrição. Tente novamente.");
+    } finally {
+      setIsNewsletterSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-24 bg-arcadia-light relative overflow-hidden">
       {/* Decorative elements */}
@@ -49,7 +68,7 @@ const ContactForm = () => {
       <div className="absolute top-20 left-20 w-60 h-60 bg-arcadia-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-arcadia-dark mb-6">
               Entre em Contato
@@ -63,88 +82,138 @@ const ContactForm = () => {
             </p>
           </div>
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-white p-8 rounded-xl shadow-lg">
-              <div className="grid md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nome</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Seu nome completo" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Contact Form */}
+            <div className="md:col-span-2">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              type="email" 
+                              placeholder="Email" 
+                              className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input type="email" placeholder="seu@email.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              placeholder="Telefone" 
+                              className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Telefone</FormLabel>
-                    <FormControl>
-                      <Input placeholder="(00) 00000-0000" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input 
+                            placeholder="Nome Completo" 
+                            className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Mensagem</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="Digite sua mensagem aqui..."
-                        className="min-h-[150px]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Mensagem"
+                            className="min-h-[150px] bg-white/50 backdrop-blur-sm border-0 text-gray-700 placeholder:text-gray-500"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-              <div className="flex justify-center">
-                <Button
-                  type="submit"
-                  className="bg-arcadia-primary hover:bg-arcadia-primary/90 text-white px-8 py-3"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Enviando..."
-                  ) : (
-                    <>
-                      Enviar Mensagem
-                      <Send className="ml-2 h-4 w-4" />
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
-          </Form>
+                  <div>
+                    <Button
+                      type="submit"
+                      className="bg-[#517B7B] hover:bg-[#517B7B]/90 text-white px-8 py-6 rounded-full w-40"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        "Enviando..."
+                      ) : (
+                        "Enviar"
+                      )}
+                    </Button>
+                  </div>
+                </form>
+              </Form>
+            </div>
+
+            {/* Newsletter Section */}
+            <div className="bg-[#517B7B] rounded-3xl p-8 text-white h-fit">
+              <h3 className="text-2xl font-bold mb-4">Nossa Newsletter</h3>
+              <p className="text-white/80 mb-6">
+                Fique por dentro das últimas novidades, dicas e tendências do mundo digital.
+                Inscreva-se em nossa newsletter.
+              </p>
+
+              <Form {...newsletterForm}>
+                <form onSubmit={newsletterForm.handleSubmit(onNewsletterSubmit)} className="space-y-4">
+                  <FormField
+                    control={newsletterForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input 
+                            type="email" 
+                            placeholder="Email" 
+                            className="bg-white h-12 border-0 text-gray-700 placeholder:text-gray-500"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#1A2C2C] hover:bg-[#1A2C2C]/90 text-white h-12"
+                    disabled={isNewsletterSubmitting}
+                  >
+                    {isNewsletterSubmitting ? "Inscrevendo..." : "Inscrever"}
+                  </Button>
+                </form>
+              </Form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

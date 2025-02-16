@@ -74,6 +74,22 @@ export default {
         'preserve-3d': 'preserve-3d',
       },
       keyframes: {
+        "orbit-1": {
+          "0%": { transform: "rotate(0deg) translateX(250px) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(250px) rotate(-360deg)" }
+        },
+        "orbit-2": {
+          "0%": { transform: "rotate(90deg) translateX(300px) rotate(-90deg)" },
+          "100%": { transform: "rotate(450deg) translateX(300px) rotate(-450deg)" }
+        },
+        "orbit-3": {
+          "0%": { transform: "rotate(180deg) translateX(280px) rotate(-180deg)" },
+          "100%": { transform: "rotate(540deg) translateX(280px) rotate(-540deg)" }
+        },
+        "orbit-4": {
+          "0%": { transform: "rotate(270deg) translateX(320px) rotate(-270deg)" },
+          "100%": { transform: "rotate(630deg) translateX(320px) rotate(-630deg)" }
+        },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -107,6 +123,10 @@ export default {
         "float-1": "float-1 8s ease-in-out infinite",
         "float-2": "float-2 12s ease-in-out infinite",
         "float-3": "float-3 10s ease-in-out infinite",
+        "orbit-1": "orbit-1 20s linear infinite",
+        "orbit-2": "orbit-2 25s linear infinite",
+        "orbit-3": "orbit-3 30s linear infinite",
+        "orbit-4": "orbit-4 35s linear infinite",
       },
     },
   },

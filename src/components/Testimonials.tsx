@@ -18,7 +18,7 @@ const testimonials = [
     avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
     rating: 5,
     text: "Design excepcional e performance impressionante. A equipe foi muito atenciosa durante todo o processo.",
-    animation: "animate-orbit-2",
+    animation: "animate-orbit-1",
     position: "right"
   },
   {
@@ -27,7 +27,7 @@ const testimonials = [
     avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
     rating: 5,
     text: "O melhor investimento que fizemos para nossa empresa. O site ficou perfeito e a usabilidade é excelente.",
-    animation: "animate-orbit-3",
+    animation: "animate-orbit-1",
     position: "bottom"
   },
   {
@@ -36,23 +36,24 @@ const testimonials = [
     avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
     rating: 5,
     text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
-    animation: "animate-orbit-4",
+    animation: "animate-orbit-1",
     position: "left"
   }
 ];
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="min-h-screen bg-arcadia-dark relative overflow-hidden py-24">
+    <section id="testimonials" className="w-dvw min-h-screen flex flex-col bg-arcadia-dark relative overflow-hidden py-24 md:flex-row-reverse">
+
       {/* Background gradient */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-br from-arcadia-primary/20 to-transparent blur-3xl 
-                      top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute w-[800px] h-[800px]
+          rounded-full bg-gradient-to-br from-arcadia-primary/20 to-transparent blur-3xl
+          top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
       </div>
 
       {/* Title section */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl ml-auto text-right mb-20">
+      <div className="container w-[50%] relative text-left flex items-center bg-fuchsia-300">
           <h2 className="text-4xl md:text-6xl font-bold">
             <span className="text-white block mb-4">O QUE</span>
             <span className="inline-block bg-[#FF6B6C] text-white px-6 py-2 skew-x-6 transform">
@@ -60,11 +61,11 @@ const Testimonials = () => {
             </span>
             <span className="text-white block mt-4">ESTÁ FALANDO</span>
           </h2>
-        </div>
       </div>
 
       {/* Orbit system */}
-      <div className="relative w-full max-w-[1000px] h-[600px] mx-auto">
+      <div className="relative w-[50%] mx-auto">
+
         {/* Center element */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
           <div className="relative">
@@ -111,6 +112,7 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
+
     </section>
   );
 };

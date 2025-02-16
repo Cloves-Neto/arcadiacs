@@ -61,22 +61,22 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-24 bg-arcadia-light relative overflow-hidden">
+    <section className="py-24 bg-arcadia-dark relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-arcadia-dark to-transparent opacity-10" />
+      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black to-transparent opacity-10" />
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-arcadia-primary/10 rounded-full blur-3xl" />
       <div className="absolute top-20 left-20 w-60 h-60 bg-arcadia-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-arcadia-dark mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Entre em Contato
               <span className="block text-arcadia-primary mt-2 text-2xl md:text-3xl">
                 Estamos prontos para atender você
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Tire suas dúvidas, solicite um orçamento ou simplesmente nos diga como podemos ajudar.
               Nossa equipe está pronta para atendê-lo.
             </p>
@@ -97,7 +97,7 @@ const ContactForm = () => {
                             <Input 
                               type="email" 
                               placeholder="Email" 
-                              className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                              className="bg-white/10 backdrop-blur-sm border-0 h-14 text-white placeholder:text-gray-400"
                               {...field} 
                             />
                           </FormControl>
@@ -114,7 +114,7 @@ const ContactForm = () => {
                           <FormControl>
                             <Input 
                               placeholder="Telefone" 
-                              className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                              className="bg-white/10 backdrop-blur-sm border-0 h-14 text-white placeholder:text-gray-400"
                               {...field} 
                             />
                           </FormControl>
@@ -132,7 +132,7 @@ const ContactForm = () => {
                         <FormControl>
                           <Input 
                             placeholder="Nome Completo" 
-                            className="bg-white/50 backdrop-blur-sm border-0 h-14 text-gray-700 placeholder:text-gray-500"
+                            className="bg-white/10 backdrop-blur-sm border-0 h-14 text-white placeholder:text-gray-400"
                             {...field} 
                           />
                         </FormControl>
@@ -149,7 +149,7 @@ const ContactForm = () => {
                         <FormControl>
                           <Textarea 
                             placeholder="Mensagem"
-                            className="min-h-[150px] bg-white/50 backdrop-blur-sm border-0 text-gray-700 placeholder:text-gray-500"
+                            className="min-h-[150px] bg-white/10 backdrop-blur-sm border-0 text-white placeholder:text-gray-400"
                             {...field}
                           />
                         </FormControl>

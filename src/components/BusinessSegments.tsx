@@ -128,12 +128,12 @@ const BusinessSegments = () => {
           {segments.map((segment, index) => (
             <div
               key={index}
-              className="group h-[200px] perspective-1000"
+              className="group h-[200px] [perspective:1000px]"
             >
               {/* Card Container */}
-              <div className="relative h-full w-full transition-transform duration-500 preserve-3d group-hover:rotate-y-180">
+              <div className="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 {/* Front of card */}
-                <div className={`absolute inset-0 backface-hidden bg-gradient-to-br ${segment.color} rounded-lg p-6 cursor-pointer`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${segment.color} rounded-lg p-6 cursor-pointer [backface-visibility:hidden]`}>
                   <div className="flex flex-col items-center justify-center gap-4 text-white h-full">
                     <div className="p-3 bg-white/10 rounded-lg">
                       {segment.icon}
@@ -145,7 +145,7 @@ const BusinessSegments = () => {
                 </div>
                 
                 {/* Back of card */}
-                <div className={`absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br ${segment.color} rounded-lg p-6 cursor-pointer`}>
+                <div className={`absolute inset-0 h-full w-full rounded-lg bg-gradient-to-br ${segment.color} p-6 cursor-pointer [transform:rotateY(180deg)] [backface-visibility:hidden]`}>
                   <div className="flex flex-col items-center justify-center text-white h-full text-center">
                     <p className="text-sm leading-relaxed">
                       {segment.description}

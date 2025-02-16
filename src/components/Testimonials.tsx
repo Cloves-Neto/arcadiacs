@@ -10,7 +10,6 @@ const testimonials = [
     rating: 5,
     text: "Experiência incrível! O site superou todas as expectativas e já estamos vendo resultados expressivos em conversões.",
     animation: "animate-orbit-1",
-    position: "top"
   },
   {
     id: 2,
@@ -19,7 +18,6 @@ const testimonials = [
     rating: 5,
     text: "Design excepcional e performance impressionante. A equipe foi muito atenciosa durante todo o processo.",
     animation: "animate-orbit-2",
-    position: "right"
   },
   {
     id: 3,
@@ -28,7 +26,6 @@ const testimonials = [
     rating: 5,
     text: "O melhor investimento que fizemos para nossa empresa. O site ficou perfeito e a usabilidade é excelente.",
     animation: "animate-orbit-3",
-    position: "bottom"
   },
   {
     id: 4,
@@ -37,7 +34,6 @@ const testimonials = [
     rating: 5,
     text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
     animation: "animate-orbit-4",
-    position: "left"
   }
 ];
 
@@ -63,7 +59,7 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* Orbit system */}
+      {/* Orbit system with sequential rotation */}
       <div className="relative w-full max-w-[1000px] h-[600px] mx-auto">
         {/* Center element */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
@@ -75,41 +71,52 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Orbit paths */}
+        {/* Orbit path */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5" />
 
         {/* Testimonial cards */}
-        {testimonials.map((testimonial) => (
-          <div
-            key={testimonial.id}
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-[orbit_20s_linear_infinite] ${
-              testimonial.animation
-            }`}
-          >
-            <div className="absolute -translate-x-1/2 -translate-y-1/2">
-              <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 w-[280px] shadow-xl hover:scale-105 transition-transform">
-                <div className="flex gap-3">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.author}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-arcadia-primary"
-                  />
-                  <div>
-                    <h4 className="text-white font-semibold">{testimonial.author}</h4>
-                    <div className="flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                      ))}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          {testimonials.map((testimonial, index) => {
+            const angle = (index * 90) % 360; // Distribute cards evenly around the circle
+            const delay = index * 5; // 5 second delay between each card
+            
+            return (
+              <div
+                key={testimonial.id}
+                className="absolute"
+                style={{
+                  transform: `rotate(${angle}deg) translateX(300px)`,
+                  animation: `orbit ${20}s linear infinite`,
+                  animationDelay: `${-delay}s`
+                }}
+              >
+                <div 
+                  className="bg-white/10 backdrop-blur-md rounded-lg p-4 w-[280px] shadow-xl hover:scale-105 transition-transform"
+                  style={{ transform: `rotate(-${angle}deg)` }} // Counter-rotate to keep cards upright
+                >
+                  <div className="flex gap-3">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.author}
+                      className="w-10 h-10 rounded-full object-cover border-2 border-arcadia-primary"
+                    />
+                    <div className="text-left">
+                      <h4 className="text-white font-semibold">{testimonial.author}</h4>
+                      <div className="flex gap-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
                     </div>
                   </div>
+                  <p className="text-white/80 text-sm mt-3 leading-relaxed text-left">
+                    {testimonial.text}
+                  </p>
                 </div>
-                <p className="text-white/80 text-sm mt-3 leading-relaxed">
-                  {testimonial.text}
-                </p>
               </div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

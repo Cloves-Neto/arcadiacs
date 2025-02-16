@@ -45,12 +45,12 @@ const Navbar = () => {
   };
 
   const menuItems: MenuItem[] = [
-    { id: "home", label: "Home", icon: <Home className="w-4 h-4 mr-2" /> },
-    { id: "about", label: "Sobre Nós", icon: <Info className="w-4 h-4 mr-2" /> },
-    { id: "portfolio", label: "Portfólio", icon: <Image className="w-4 h-4 mr-2" /> },
-    { id: "segments", label: "Segmentos", icon: <LayoutGrid className="w-4 h-4 mr-2" /> },
-    { id: "testimonials", label: "Depoimentos", icon: <MessageSquare className="w-4 h-4 mr-2" /> },
-    { id: "contact", label: "Contato", icon: <Phone className="w-4 h-4 mr-2" /> },
+    { id: "home", label: "Home", icon: <Home className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
+    { id: "about", label: "Sobre Nós", icon: <Info className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
+    { id: "portfolio", label: "Portfólio", icon: <Image className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
+    { id: "segments", label: "Segmentos", icon: <LayoutGrid className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
+    { id: "testimonials", label: "Depoimentos", icon: <MessageSquare className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
+    { id: "contact", label: "Contato", icon: <Phone className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
   ];
 
   return (
@@ -71,7 +71,7 @@ const Navbar = () => {
               }`}
             />
             <span className={`font-bold text-arcadia-white transition-all duration-500 ${
-              isScrolled ? "text-xl" : "text-3xl"
+              isScrolled ? "text-xl" : "text-4xl"
             }`}>
               ARCADIA
             </span>
@@ -86,7 +86,7 @@ const Navbar = () => {
                 className={`flex items-center font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-all duration-500 ${
                   activeSection === item.id ? "text-arcadia-secondary" : ""
                 } ${
-                  isScrolled ? "text-sm" : "text-base"
+                  isScrolled ? "text-sm" : "text-lg"
                 }`}
               >
                 {item.icon}

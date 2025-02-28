@@ -1,54 +1,27 @@
 
 import { Target, Fingerprint, Award, Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
 
-const differentials = [
-  {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Otimização para Dispositivos Móveis",
-    description: "Sites responsivos e adaptados para diferentes telas, proporcionando uma experiência impecável em qualquer dispositivo."
-  },
-  {
-    icon: <Search className="w-8 h-8" />,
-    title: "SEO Integrado para Melhor Visibilidade",
-    description: "Estrutura do site otimizada para motores de busca, aumentando o alcance e atraindo visitantes."
-  },
-  {
-    icon: <LayoutDashboard className="w-8 h-8" />,
-    title: "Experiência de Navegação Intuitiva",
-    description: "Layouts pensados para facilitar a navegação e converter visitantes em clientes."
-  },
-  {
-    icon: <Focus className="w-8 h-8" />,
-    title: "Foco em Conversão e Usabilidade",
-    description: "Design e estrutura voltados para aumentar a taxa de conversão e facilitar a jornada do cliente."
-  }
-];
+
 
 const About = () => {
   return (
     <section className="py-24 bg-arcadia-dark relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 text-arcadia-primary/20">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="currentColor">
-          <circle cx="60" cy="60" r="60"/>
-        </svg>
-      </div>
-      <div className="absolute bottom-0 left-0 text-arcadia-primary/20">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="currentColor">
-          <path d="M0 120L60 60L120 120H0Z"/>
-        </svg>
+      <div className="absolute inset-0 items-center">
+        <img alt="background" src="/bg-star.svg" className="object-cover w-5/6 absolute top-0 left-2/4 -translate-x-2/4 animate-pulse" />
       </div>
 
+      {/*  Title div content */}
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-arcadia-primary mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-arcadia-secondary mb-6">
             O Que Nos Define:
             <span className="block text-white mt-2">Visão, Missão e Diferenciais</span>
           </h2>
-          
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-            Mais do que criar sites, construímos experiências digitais. 
-            Comprometidos com inovação e qualidade, cada etapa reflete 
+
+          <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto">
+            Mais do que criar sites, construímos experiências digitais.
+            Comprometidos com inovação e qualidade, cada etapa reflete
             nossos valores e visão.
           </p>
         </div>
@@ -64,13 +37,13 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-arcadia-dark">Missão</h3>
               </div>
-              
+
               {/* Back side */}
               <div className="absolute inset-0 h-full w-full rounded-lg bg-arcadia-primary p-8 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div className="flex flex-col items-center justify-center h-full">
                   <h3 className="text-xl font-bold text-white mb-4">Nossa Missão</h3>
                   <p className="text-white/90">
-                    Transformar ideias em soluções digitais excepcionais, impulsionando 
+                    Transformar ideias em soluções digitais excepcionais, impulsionando
                     o sucesso dos nossos clientes através da tecnologia e inovação.
                   </p>
                 </div>
@@ -88,13 +61,13 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-arcadia-dark">Valores</h3>
               </div>
-              
+
               {/* Back side */}
               <div className="absolute inset-0 h-full w-full rounded-lg bg-arcadia-primary p-8 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div className="flex flex-col items-center justify-center h-full">
                   <h3 className="text-xl font-bold text-white mb-4">Nossos Valores</h3>
                   <p className="text-white/90">
-                    Excelência, inovação, comprometimento e transparência são os 
+                    Excelência, inovação, comprometimento e transparência são os
                     pilares que guiam nossas ações e relacionamentos.
                   </p>
                 </div>
@@ -112,55 +85,17 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-arcadia-dark">Diferenciais</h3>
               </div>
-              
+
               {/* Back side */}
               <div className="absolute inset-0 h-full w-full rounded-lg bg-arcadia-primary p-8 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                 <div className="flex flex-col items-center justify-center h-full">
                   <h3 className="text-xl font-bold text-white mb-4">Nossos Diferenciais</h3>
                   <p className="text-white/90">
-                    Expertise técnica, atendimento personalizado e compromisso 
+                    Expertise técnica, atendimento personalizado e compromisso
                     com resultados que fazem a diferença no seu negócio.
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Differentials Section */}
-      <div className="container mx-auto px-4 mt-32">
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Left side - Image placeholder */}
-          <div className="bg-white/5 rounded-lg aspect-square"></div>
-
-          {/* Right side - Differentials */}
-          <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 inline-block bg-arcadia-primary px-6 py-3 rounded-lg">
-              Nossos Sites Possuem
-            </h2>
-
-            <div className="space-y-8">
-              {differentials.map((item, index) => (
-                <div key={index} className="flex gap-4 items-start group">
-                  <div className="w-12 h-12 rounded-full bg-arcadia-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-arcadia-primary/20 transition-colors">
-                    <span className="text-arcadia-primary">
-                      {item.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/80 leading-relaxed">
-                      {item.description}
-                    </p>
-                    {index < differentials.length - 1 && (
-                      <div className="border-b border-white/10 mt-6"></div>
-                    )}
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>

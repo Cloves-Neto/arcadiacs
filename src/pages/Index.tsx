@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import BusinessSegments from "@/components/BusinessSegments";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import Diferenciais from "@/components/Diferenciais";
 
 const Index = () => {
   return (
@@ -15,8 +16,11 @@ const Index = () => {
       <section id="home" className="bg-arcadia-dark">
         <Hero />
       </section>
-      <section id="about" className="bg-arcadia-white">
+      <section id="about">
         <About />
+      </section>
+      <section id="diferenciais">
+        <Diferenciais />
       </section>
       <section id="portfolio" className="bg-arcadia-primary">
         <Portfolio />

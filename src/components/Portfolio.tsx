@@ -11,15 +11,17 @@ import { Button } from "@/components/ui/button";
 const projects = [
   {
     id: 1,
-    title: "Move - Mobilidade Urbana",
-    image: "/lovable-uploads/686b1004-8104-42ab-9e13-447f71308926.png",
+    title: "Devneto",
+    image: "/portifolio/portifolio-1.svg",
     focus: [
-      "Conversão",
+      "Site de portifólio",
       "Identidade Forte",
       "Performance Superior",
       "Experiência Fluida",
+      "Responsividade"
     ],
   },
+
   // Add more projects here when available
 ];
 
@@ -27,15 +29,8 @@ const Portfolio = () => {
   return (
     <section className="min-h-screen bg-arcadia-primary relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 text-white/10">
-        <svg width="40" height="40" viewBox="0 0 40 40">
-          <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor" />
-        </svg>
-      </div>
-      <div className="absolute bottom-10 left-10 text-white/10">
-        <svg width="40" height="40" viewBox="0 0 40 40">
-          <circle cx="20" cy="20" r="20" fill="currentColor" />
-        </svg>
+      <div className="absolute inset-0 items-center">
+        <img alt="background" src="/bg-star.svg" className="object-cover w-5/6 absolute top-0 left-2/4 -translate-x-2/4 animate-pulse" />
       </div>
 
       <div className="container mx-auto px-4 py-24">
@@ -50,18 +45,18 @@ const Portfolio = () => {
           <CarouselContent>
             {projects.map((project) => (
               <CarouselItem key={project.id} className="md:basis-full">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="flex gap-8 items-center">
                   {/* Project Image */}
-                  <div className="relative">
+                  <div className="relative w-3/5">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full rounded-lg shadow-2xl"
+                      className="w-full"
                     />
                   </div>
 
                   {/* Project Info Card */}
-                  <div className="bg-arcadia-dark p-8 rounded-lg">
+                  <div className="bg-arcadia-dark p-8 rounded-lg w-2/5">
                     <div className="space-y-6">
                       <h3 className="text-2xl font-bold text-white mb-8">
                         FOCADO EM:

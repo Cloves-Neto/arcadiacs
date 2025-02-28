@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Star } from "lucide-react";
+import "@/styles/Diferenciais.css"
 
 const testimonials = [
   {
@@ -9,6 +10,7 @@ const testimonials = [
     avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
     rating: 5,
     text: "Experiência incrível! O site superou todas as expectativas e já estamos vendo resultados expressivos em conversões.",
+
   },
   {
     id: 2,
@@ -30,6 +32,20 @@ const testimonials = [
     avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
     rating: 5,
     text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
+  },
+  {
+    id: 5,
+    author: "Henry Tollf",
+    avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
+    rating: 5,
+    text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
+  },
+  {
+    id: 6,
+    author: "Maria silva",
+    avatar: "/lovable-uploads/ad025785-f4db-4683-958c-1ed1e6a27fb5.png",
+    rating: 5,
+    text: "Resultados surpreendentes desde o primeiro mês. Recomendo fortemente para qualquer empresa.",
   }
 ];
 
@@ -43,7 +59,7 @@ const Testimonials = () => {
       </div>
 
       {/* Title section */}
-      <div className="container w-[50%] relative text-left flex items-center">
+      <div className="container w-2/5 relative text-left flex items-center">
         <h2 className="text-4xl md:text-6xl font-bold">
           <span className="text-white block mb-4">O QUE</span>
           <span className="inline-block bg-[#FF6B6C] text-white px-6 py-2 skew-x-6 transform">
@@ -54,59 +70,21 @@ const Testimonials = () => {
       </div>
 
       {/* Ferris wheel container */}
-      <div className="relative w-[50%] aspect-square mx-auto">
-        {/* Center hub */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-32 h-32 bg-white/10 backdrop-blur-lg rounded-full flex items-center justify-center">
-            <div className="text-center">
-              <span className="text-4xl font-bold text-white block">+12K</span>
-              <span className="text-arcadia-primary text-lg">projetos</span>
-            </div>
-          </div>
-        </div>
+      <div className="w-3/5 relative flex items-center justify-center bg-green-100">
 
-        {/* Rotating wheel */}
-        <div className="absolute w-full h-full animate-[spin_20s_linear_infinite]">
           {/* Testimonials wheel */}
-          {testimonials.map((testimonial, index) => {
-            const angle = (index * 90); // 90 degrees spacing between cards
-            const radius = 300; // Distance from center
-            const x = radius * Math.cos((angle * Math.PI) / 180);
-            const y = radius * Math.sin((angle * Math.PI) / 180);
-
-            return (
-              <div
-                key={testimonial.id}
-                className="absolute top-1/2 left-1/2"
-                style={{
-                  transform: `translate(${x}px, ${y}px) rotate(-${angle}deg)`,
-                }}
-              >
-                {/* Testimonial card */}
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 w-[280px] shadow-xl hover:scale-105 transition-transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="flex gap-3">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.author}
-                      className="w-10 h-10 rounded-full object-cover border-2 border-arcadia-primary"
-                    />
-                    <div>
-                      <h4 className="text-white font-semibold">{testimonial.author}</h4>
-                      <div className="flex gap-1">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
+          <div className="box w-[400px] h-[400px] top-0 left-0 right-0 bottom-0 m-auto rounded-full border border-arcadia-primary relative">
+              <div className="img relative w-full h- h-full flex justify-center items-center">
+                {
+                  testimonials.map((t)=>(
+                    <div className={`imgBx absolute w-32 h-32 bg-blue-500 top-0 left-0 right-0 bottom-0 m-auto rounded-full overflow-hidden`}>
+                        <img className={`absolute w-full h-full left-0 top-0 object-cover rounded-full cursor-pointer`} src={`/perfil${t.id}.png`} alt={`imagem de perfil`+t.id} />
                     </div>
-                  </div>
-                  <p className="text-white/80 text-sm mt-3 leading-relaxed">
-                    {testimonial.text}
-                  </p>
-                </div>
+                  ))
+                }
               </div>
-            );
-          })}
-        </div>
+          </div>
+
       </div>
     </section>
   );

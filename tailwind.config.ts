@@ -27,7 +27,7 @@ export default {
         foreground: "hsl(var(--foreground))",
         arcadia: {
           primary: "#C70039",
-          dark: "#151E47",
+          dark: "#191f42",
           secondary: "#FF696A",
           light: "#FFF5E1",
           white: "#FFFFFF",
@@ -112,5 +112,4 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

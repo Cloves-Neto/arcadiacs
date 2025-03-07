@@ -53,12 +53,12 @@ const Navbar = () => {
   //   { id: "contact", label: "Contato", icon: <Phone className={`mr-2 transition-all duration-500 ${isScrolled ? "w-4 h-4" : "w-6 h-6"}`} /> },
   // ];
   const menuItems: MenuItem[] = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "Sobre Nós"},
-    { id: "portfolio", label: "Portfólio"},
-    { id: "segments", label: "Segmentos"},
-    { id: "testimonials", label: "Depoimentos"},
-    { id: "contact", label: "Contato"},
+    { id: "Inicio", label: "Inicio" },
+    { id: "Sobre", label: "Sobre"},
+    { id: "Diferenciais", label: "Diferenciais"},
+    { id: "Portifolio", label: "Portifolio"},
+    { id: "Segmentos", label: "Segmentos"},
+    // { id: "contact", label: "Contato"},
   ];
 
   return (

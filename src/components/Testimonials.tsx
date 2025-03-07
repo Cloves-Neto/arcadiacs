@@ -1,7 +1,4 @@
-
-import React from "react";
-import { Star } from "lucide-react";
-import "@/styles/Diferenciais.css"
+import "@/styles/testmonials.css";
 
 const testimonials = [
   {
@@ -73,12 +70,12 @@ const Testimonials = () => {
       <div className="w-3/5 relative flex items-center justify-center bg-green-100">
 
           {/* Testimonials wheel */}
-          <div className="box w-[400px] h-[400px] top-0 left-0 right-0 bottom-0 m-auto rounded-full border border-arcadia-primary relative">
-              <div className="img relative w-full h- h-full flex justify-center items-center">
+          <div className="box rounded-full border border-arcadia-primary relative">
+              <div className="img">
                 {
                   testimonials.map((t)=>(
-                    <div className={`imgBx absolute w-32 h-32 bg-blue-500 top-0 left-0 right-0 bottom-0 m-auto rounded-full overflow-hidden`}>
-                        <img className={`absolute w-full h-full left-0 top-0 object-cover rounded-full cursor-pointer`} src={`/perfil${t.id}.png`} alt={`imagem de perfil`+t.id} />
+                    <div className={`imgBx i-${t.id}`}>
+                        <img  src={`/perfil${t.id}.png`} alt={`imagem de perfil`+t.id} />
                     </div>
                   ))
                 }

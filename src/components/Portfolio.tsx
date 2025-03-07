@@ -1,4 +1,3 @@
-
 import {
   Carousel,
   CarouselContent,
@@ -21,20 +20,22 @@ const projects = [
       "Responsividade"
     ],
   },
-
-  // Add more projects here when available
 ];
 
 const Portfolio = () => {
   return (
-    <section className="min-h-screen bg-arcadia-primary relative overflow-hidden">
+    <section id="Portifolio" className="min-h-screen bg-arcadia-primary relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute inset-0 items-center">
-        <img alt="background" src="/bg-star.svg" className="object-cover w-5/6 absolute top-0 left-2/4 -translate-x-2/4 animate-pulse" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          alt="background"
+          src="/bg-star.svg"
+          className="object-cover w-5/6 absolute top-0 left-1/2 -translate-x-1/2 animate-pulse"
+        />
       </div>
 
       <div className="container mx-auto px-4 py-24">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16 flex items-center gap-4">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 flex items-center gap-4">
           <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
             <span className="w-2 h-2 bg-white rounded-full" />
           </span>
@@ -45,9 +46,9 @@ const Portfolio = () => {
           <CarouselContent>
             {projects.map((project) => (
               <CarouselItem key={project.id} className="md:basis-full">
-                <div className="flex gap-8 items-center">
+                <div className="flex flex-col md:flex-row gap-8 items-center">
                   {/* Project Image */}
-                  <div className="relative w-3/5">
+                  <div className="relative w-full md:w-3/5">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -56,7 +57,7 @@ const Portfolio = () => {
                   </div>
 
                   {/* Project Info Card */}
-                  <div className="bg-arcadia-dark p-8 rounded-lg w-2/5">
+                  <div className="bg-arcadia-dark p-8 rounded-lg w-full md:w-2/5">
                     <div className="space-y-6">
                       <h3 className="text-2xl font-bold text-white mb-8">
                         FOCADO EM:
@@ -74,7 +75,7 @@ const Portfolio = () => {
                       </ul>
                       <Button
                         variant="outline"
-                        className="mt-8 border-arcadia-primary text-arcadia-primary hover:bg-arcadia-primary hover:text-white transition-colors"
+                        className="mt-8 border-arcadia-primary text-arcadia-primary hover:bg-arcadia-primary hover:text-white transition-colors w-full"
                       >
                         Ver Projeto
                       </Button>

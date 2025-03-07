@@ -1,20 +1,56 @@
 
-/**
- * @component Footer
- * @description Rodapé principal com informações de contato, links rápidos e redes sociais
- * 
- * Features:
- * - Grid responsivo com 4 colunas
- * - Links para redes sociais
- * - Informações de contato
- * - Links rápidos para seções
- * - Efeitos decorativos de background
- */
+import { useState, useEffect } from "react";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+interface MenuItem {
+  id: string;
+  label: string;
+  // icon: JSX.Element;
+}
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
 
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 20);
+
+        const sections = document.querySelectorAll("section");
+        const scrollPosition = window.scrollY + 100;
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.id;
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setActiveSection(sectionId);
+          }
+        });
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToSection = (sectionId: string) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+  const menuItems: MenuItem[] = [
+    { id: "Inicio", label: "Inicio" },
+    { id: "Sobre", label: "Sobre"},
+    { id: "Diferenciais", label: "Diferenciais"},
+    { id: "Portifolio", label: "Portifolio"},
+    { id: "Segmentos", label: "Segmentos"},
+    // { id: "contact", label: "Contato"},
+  ];
   return (
     <footer className="bg-arcadia-dark text-arcadia-white relative overflow-hidden">
       {/* Efeitos decorativos */}
@@ -27,12 +63,11 @@ const Footer = () => {
           {/* Logo e Sobre */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/2b395b57-f327-41fb-8761-09c0cb7c82af.png" 
-                alt="Arcadia Logo" 
-                className="h-10 w-auto"
+              <img
+                src="/public/arcadia-logo.svg"
+                alt="Arcadia Logo"
+                className="h-20 w-auto"
               />
-              <span className="text-2xl font-bold">ARCADIA</span>
             </div>
             <p className="text-gray-400 max-w-xs">
               Transformando ideias em experiências digitais memoráveis através de soluções web inovadoras.
@@ -42,18 +77,20 @@ const Footer = () => {
           {/* Links Rápidos */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Links Rápidos</h3>
-            <ul className="space-y-3">
-              {["Home", "Sobre Nós", "Portfólio", "Segmentos", "Depoimentos", "Contato"].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-gray-400 hover:text-arcadia-primary transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`flex items-center font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-all duration-500 ${
+                  activeSection === item.id ? "text-arcadia-secondary" : ""
+                } ${
+                  isScrolled ? "text-sm" : "text-lg"
+                }`}
+              >
+                {/* {item.icon} */}
+                {item.label}
+              </button>
+            ))}
           </div>
 
           {/* Informações de Contato */}
@@ -81,27 +118,27 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Redes Sociais</h3>
             <div className="flex space-x-4">
-              <a 
-                href="#" 
+              <a
+                href="/"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="https://www.instagram.com/arcadia.cs"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a 
-                href="#" 
+              {/* <a
+                href="#"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-arcadia-primary transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -112,10 +149,11 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © {currentYear} Arcadia. Todos os direitos reservados.
             </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
+
+            {/* <div className="flex space-x-6 text-sm text-gray-400">
               <a href="#" className="hover:text-arcadia-primary transition-colors">Política de Privacidade</a>
               <a href="#" className="hover:text-arcadia-primary transition-colors">Termos de Uso</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

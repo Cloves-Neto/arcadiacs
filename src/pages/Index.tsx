@@ -13,27 +13,29 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <section id="home" className="bg-arcadia-dark">
+      <section id="Inicio" className="bg-arcadia-dark">
         <Hero />
       </section>
-      <section id="about">
+      <section id="Sobre">
         <About />
       </section>
-      <section id="diferenciais">
+      <section id="Diferenciais">
         <Diferenciais />
       </section>
-      <section id="portfolio" className="bg-arcadia-primary">
+      <section id="Portfolio" className="bg-arcadia-primary">
         <Portfolio />
       </section>
-      <section id="segments" className="bg-arcadia-white">
+      <section id="Segmentos" className="bg-arcadia-white">
         <BusinessSegments />
       </section>
-      <section id="testimonials" className="bg-arcadia-dark">
+
+      {/* <section id="testimonials" className="bg-arcadia-dark">
         <Testimonials />
-      </section>
-      <section id="contact" className="bg-arcadia-primary">
+      </section> */}
+
+      {/* <section id="contact" className="bg-arcadia-primary">
         <ContactForm />
-      </section>
+      </section> */}
       <Footer />
     </main>
   );

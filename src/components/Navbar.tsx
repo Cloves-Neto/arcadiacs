@@ -14,6 +14,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      
       setIsScrolled(window.scrollY > 20);
 
       const sections = document.querySelectorAll("section");
@@ -62,17 +63,22 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-hidden bg-arcadia-dark`}>
-      <div className="container mx-auto px-4">
+    <nav className={`fixed px-6 top-0 left-0 right-0 z-50 transition-all duration-500 overflow-hidden bg-arcadia-dark
+      ${
+        isScrolled ? "border-b-0" : "border-b border-b-gray-100"
+      }
+      `
+    }>
+      <div className="container mx-auto px-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a
             href="/"
-            className={`transition-all duration-500 flex items-center w-24 h-14`}>
+            className={`transition-all duration-500 flex items-center`}>
             <img
               src="/arcadia-logo.svg"
               alt="Arcadia Logo"
-              className="object-fill scale-150"
+              className="object-cover w-44 h-20 -ml-4"
             />
           </a>
 

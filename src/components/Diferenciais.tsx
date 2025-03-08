@@ -48,7 +48,7 @@ const Diferenciais = () => {
 
           {/* Right side - Differentials */}
           <div className="space-y-8 text-center md:text-left">
-            <h2 className="text-3xl md:text-5xl font-bold text-white bg-arcadia-secondary px-6 py-3 inline-block">
+            <h2 className="text-3xl p-2 mb-8 md:text-5xl md:mb-0 font-bold text-white bg-arcadia-secondary md:px-6 py-3 inline-block">
               Nossos Sites Possuem
             </h2>
 

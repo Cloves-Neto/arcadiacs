@@ -81,7 +81,7 @@ const Footer = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex items-center font-bold capitalize px-4 py-2 text-arcadia-white hover:text-arcadia-secondary transition-all duration-500 ${
+                className={`flex items-start font-medium capitalize py-2 text-arcadia-white/60 hover:text-arcadia-primary transition-all duration-500 ${
                   activeSection === item.id ? "text-arcadia-secondary" : ""
                 } ${
                   isScrolled ? "text-sm" : "text-lg"
@@ -105,7 +105,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-arcadia-primary flex-shrink-0" />
-                <span className="text-gray-400">(11) 96527-9056</span>
+                <span className="text-gray-400">(11)9 7714-5493</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-arcadia-primary flex-shrink-0" />

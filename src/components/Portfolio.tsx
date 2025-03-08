@@ -35,11 +35,8 @@ const Portfolio = () => {
       </div>
 
       <div className="container mx-auto px-4 py-24">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 flex items-center gap-4">
-          <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-            <span className="w-2 h-2 bg-white rounded-full" />
-          </span>
-          NOSSOS PROJETOS
+        <h2 className="flex justify-center text-4xl md:text-6xl capitalize font-bold text-white mb-16 items-center md:justify-start gap-4">
+          Nossos projetos
         </h2>
 
         <Carousel className="w-full">

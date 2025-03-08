@@ -21,10 +21,13 @@ const Hero = () => {
             <span className="text-[#FF696A] font-normal capitalize text-xl md:text-4xl ">Seu novo site começa aqui!</span>
           </h1>
           <Button
+            asChild
             className="w-52 h-8 text-sm px-6 md:w-72 md:h-14 md:px-8 bg-[#FF696A] hover:bg-arcadia-primary text-arcadia-white py-6 rounded-full md:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-slow"
           >
+            <a href="https://wa.link/o3eofo">
               <Rocket className="w-3 h-3 mr-2 md:h-5 md:w-5" />
               Faça um Orçamento
+            </a>
           </Button>
         </div>
       </div>

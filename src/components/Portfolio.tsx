@@ -6,6 +6,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { link } from "fs";
 
 const projects = [
   {
@@ -43,27 +44,27 @@ const Portfolio = () => {
           <CarouselContent>
             {projects.map((project) => (
               <CarouselItem key={project.id} className="md:basis-full">
-                <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
                   {/* Project Image */}
-                  <div className="relative w-full md:w-3/5">
+                  <div className="relative w-full md:w-3/5 flex items-center justify-center">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full"
+                      className="w-4/5"
                     />
                   </div>
 
                   {/* Project Info Card */}
-                  <div className="bg-arcadia-dark p-8 rounded-lg w-full md:w-2/5">
-                    <div className="space-y-6">
-                      <h3 className="text-2xl font-bold text-white mb-8">
+                  <div className="w-full md:w-2/5 flex items-center justify-center">
+                    <div className="bg-arcadia-dark space-y-6 w-3/5 p-6 rounded-lg">
+                      <h3 className="text-2xl font-bold text-white mb-8 text-start">
                         FOCADO EM:
                       </h3>
-                      <ul className="space-y-4">
+                      <ul className="space-y-4 w-full items-start justify-start">
                         {project.focus.map((item, index) => (
                           <li
                             key={index}
-                            className="text-lg text-white/90 flex items-center gap-2"
+                            className="text-lg text-white/80 flex items-center gap-2"
                           >
                             <span className="w-2 h-2 bg-arcadia-primary rounded-full" />
                             {item}
@@ -71,10 +72,10 @@ const Portfolio = () => {
                         ))}
                       </ul>
                       <Button
-                        variant="outline"
-                        className="mt-8 border-arcadia-primary text-arcadia-primary hover:bg-arcadia-primary hover:text-white transition-colors w-full"
+                        asChild
+                        className="mt-8 mx-auto rounded-full bg-arcadia-white border-arcadia-primary text-arcadia-primary hover:bg-arcadia-primary hover:text-white transition-colors w-28"
                       >
-                        Ver Projeto
+                        <a href="https://www.devneto.com.br/">Ver Projeto</a>
                       </Button>
                     </div>
                   </div>

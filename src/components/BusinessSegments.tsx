@@ -126,7 +126,7 @@ const BusinessSegments = () => {
               {/* Card Container */}
               <div className="relative h-32 w-full transition-all duration-500 md:[transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)]">
                 {/* Front of card */}
-                <div className={`absolute inset-0 bg-gradient-to-br border-2 border-${segment.color} rounded-lg cursor-pointer md:[backface-visibility:hidden]`}>
+                <div className={`absolute inset-0 bg-gradient-to-br border-2 border-${segment.color} rounded-lg cursor-pointer [backface-visibility:hidden]`}>
                   <div className=" flex flex-col gap-2 md:flex-row items-center justify-center text-white h-full">
                     <div className="p-3 rounded-lg">
                       {segment.icon}
@@ -138,7 +138,7 @@ const BusinessSegments = () => {
                 </div>
 
                 {/* Back of card */}
-                <div className={`hidden md:absolute inset-0 h-full w-full rounded-lg border-2 border-${segment.color} bg-${segment.color} p-4 cursor-pointer md:[transform:rotateY(180deg)] md:[backface-visibility:hidden]`}>
+                <div className={`hidden md:absolute md:block inset-0 h-full w-full rounded-lg border-2 border-${segment.color} bg-${segment.color} p-4 cursor-pointer md:[transform:rotateY(180deg)] md:[backface-visibility:hidden]`}>
                   <div className="flex flex-col items-center justify-center text-white h-full text-center">
                     <p className="text-sm font-medium leading-relaxed">
                       {segment.description}

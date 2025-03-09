@@ -1,49 +1,13 @@
-.i-1 { --i:1; }
-.i-2 { --i:2; }
-.i-4 { --i:4; }
-.i-5 { --i:5; }
-.i-6 { --i:6; }
+/* Estilos globais que serão aplicados a toda a aplicação */
+.orbit-container:hover .card-container {
+    animation-play-state: paused !important;
+  }
 
-/* Continue conforme necessário */
+  .card-container:hover {
+    animation-play-state: paused !important;
+  }
 
-
-
-.box{
-    position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-.img{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.img .imgBx{
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    transform: rotate(calc(360deg/6 * var(--i)));
-    transform-origin: 200px;
-
-    img{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        transform-origin: calc(150px + 40px); /* v1 + v2 -> v1 = metade do valor do div.img + v2 = metade do valor do div.imgBox */
-        transform: rotate(calc(360deg/6 * var(--i))); /* 360deg valor do item de rotação dividido pelo nuumero de items do imgBx */
-
-    }
-
-}
-
+  .card-container:hover .card-details {
+    transform: translate(-50%, -50%) scale(1) !important;
+    opacity: 1 !important;
+  }

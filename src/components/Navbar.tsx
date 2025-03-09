@@ -14,7 +14,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      
+
       setIsScrolled(window.scrollY > 20);
 
       const sections = document.querySelectorAll("section");
@@ -59,13 +59,14 @@ const Navbar = () => {
     { id: "Diferenciais", label: "Diferenciais"},
     { id: "Portifolio", label: "Portifolio"},
     { id: "Segmentos", label: "Segmentos"},
+    { id: "Price", label: "Planos"},
     // { id: "contact", label: "Contato"},
   ];
 
   return (
     <nav className={`fixed px-6 top-0 left-0 right-0 z-50 transition-all duration-500 overflow-hidden bg-arcadia-dark
       ${
-        isScrolled ? "border-b-0" : "border-b border-b-gray-100"
+        isScrolled ? "border-b border-b-gray-500" : "border-b-0"
       }
       `
     }>

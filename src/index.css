@@ -2,7 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.orbit-container:hover .card-container {
+  animation-play-state: paused !important;
+}
+
+.card-container:hover {
+  animation-play-state: paused !important;
+}
+
+.card-container:hover .card-details {
+  transform: translate(-50%, -50%) scale(1) !important;
+  opacity: 1 !important;
+}
+
 @layer base {
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

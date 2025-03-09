@@ -1,4 +1,6 @@
 import { Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
+import React from 'react'
+import ReactPlayer from 'react-player'
 
 const differentials = [
   {
@@ -39,11 +41,19 @@ const Diferenciais = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left side - Image placeholder */}
           <div className="w-full flex justify-center">
-            <img
+            {/* <img
               src="/diferenciais/arco-site.png"
               alt="mascote arco"
               className="w-full max-w-xs md:max-w-md lg:max-w-lg"
-            />
+            /> */}
+            <ReactPlayer
+              width='100%'
+              height='100%'
+              url={"/arco.mp4"}
+              loop
+              muted
+              playing
+              />
           </div>
 
           {/* Right side - Differentials */}

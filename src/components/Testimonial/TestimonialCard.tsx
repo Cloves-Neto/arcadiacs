@@ -22,7 +22,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   const delayFactor = (index / totalCards) * 30;
 
   return (
-    <div className="card-container absolute flex items-center justify-center"
+    <div className="card-container absolute flex items-center justify-center z-[100]"
       style={{
         animation: `orbit 30s linear infinite`,
         animationDelay: `-${delayFactor}s`,

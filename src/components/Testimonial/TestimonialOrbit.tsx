@@ -59,8 +59,8 @@ const TestimonialOrbit: React.FC = () => {
       initial: '/testmonial/ana.jpg',
       name: 'Ana Souza',
       date: '05/02/2025',
-      rating: 4,
-      content: 'Projeto entregue dentro do prazo e com excelente acabamento. Apenas pequenos ajustes foram necessários.'
+      rating: 5,
+      content: 'A Arcadia superou todas as minhas expectativas! O site foi entregue antes do prazo e com um design incrível. A atenção aos detalhes e a qualidade do trabalho realmente se destacaram. Ficamos muito satisfeitos com o resultado!'
     },
     {
       id: 2,
@@ -83,15 +83,15 @@ const TestimonialOrbit: React.FC = () => {
       initial: '/testmonial/marta.jpg',
       name: 'Marta Santos',
       date: '03/02/2025',
-      rating: 3,
-      content: 'Bom trabalho, mas demorou um pouco mais do que o prazo inicial.'
+      rating: 5,
+      content: 'A Arcadia conseguiu traduzir perfeitamente nossa identidade e necessidades no design do site. A personalização ficou fantástica e o retorno dos nossos clientes tem sido ótimo. Eles realmente sabem o que estão fazendo!'
     },
     {
       id: 5,
       initial: '/testmonial/osmar.jpg',
       name: 'Osmar Ferreira',
       date: '15/01/2025',
-      rating: 4,
+      rating: 5,
       content: 'Muito profissional e atencioso às minhas necessidades. Resultados excelentes.'
     },
     {
@@ -212,9 +212,6 @@ const TestimonialOrbit: React.FC = () => {
           animation-play-state: paused;
         }
 
-        .card-container:hover {
-          animation-play-state: paused;
-        }
 
         .card-container:hover .card-details {
           transform: translate(-50%, -50%) scale(1);

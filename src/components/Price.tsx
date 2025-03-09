@@ -170,7 +170,7 @@ const PricingCard: React.FC<{ plan: PricingPlan }> = ({ plan }) => {
       <CardFooter>
           <Button
                 asChild
-                className="w-28 h-6 text-sm px-6 md:w-40 md:h-8 md:px-8 bg-arcadia-primary hover:bg-arcadia-primary/80 text-arcadia-white py-6 rounded-md md:text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-slow"
+                className="w-44 h-6 text-sm px-6 md:w-40 md:h-8 md:px-8 bg-arcadia-primary hover:bg-arcadia-primary/80 text-arcadia-white py-6 rounded-md md:text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-slow"
               >
                 <a href="https://api.whatsapp.com/send?phone=5511977145493&text=Gostaria%20de%20consultar%20o%20valor%20do%20site%20personalizado">
                     <Rocket className="w-3 h-3 mr-2 md:h-5 md:w-5 flex items-center justify-center"/>
@@ -207,7 +207,7 @@ const CustomPlan: React.FC = () => {
 
           <Button
             asChild
-            className="w-32 h-6 text-sm px-6 md:w-44 md:h-8 md:px-8 bg-arcadia-primary hover:bg-arcadia-primary/80 text-arcadia-white py-6 rounded-md md:text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-slow"
+            className="h-6 text-sm px-6 w-44 md:h-8 md:px-8 bg-arcadia-primary hover:bg-arcadia-primary/80 text-arcadia-white py-6 rounded-md md:text-sm font-medium shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-slow"
           >
             <a href="https://api.whatsapp.com/send?phone=5511977145493&text=Gostaria%20de%20consultar%20o%20valor%20do%20site%20personalizado">
                 <Rocket className="w-3 h-3 mr-2 md:h-5 md:w-5 flex items-center justify-center"/>

@@ -1,91 +1,229 @@
-import { Smartphone, Search, LayoutDashboard, Focus } from "lucide-react";
-import React from 'react'
-import ReactPlayer from 'react-player'
+import { Smartphone, Search, LayoutDashboard, Focus, ChevronRight } from "lucide-react";
+import React, { useState, useEffect, useRef } from 'react';
+import ReactPlayer from 'react-player';
 
 const differentials = [
   {
-    icon: <Smartphone className="w-8 h-8" />,
+    icon: <Smartphone className="w-6 h-6 md:w-8 md:h-8" />,
     title: "Otimização para Dispositivos Móveis",
-    description: "Sites responsivos e adaptados para diferentes telas, proporcionando uma experiência impecável em qualquer dispositivo."
+    description: "Sites responsivos e adaptados para diferentes telas, proporcionando uma experiência impecável em qualquer dispositivo.",
+    color: "#FF696A"
   },
   {
-    icon: <Search className="w-8 h-8" />,
+    icon: <Search className="w-6 h-6 md:w-8 md:h-8" />,
     title: "SEO Integrado para Melhor Visibilidade",
-    description: "Estrutura do site otimizada para motores de busca, aumentando o alcance e atraindo visitantes."
+    description: "Estrutura do site otimizada para motores de busca, aumentando o alcance e atraindo visitantes.",
+    color: "#FF696A"
   },
   {
-    icon: <LayoutDashboard className="w-8 h-8" />,
+    icon: <LayoutDashboard className="w-6 h-6 md:w-8 md:h-8" />,
     title: "Experiência de Navegação Intuitiva",
-    description: "Layouts pensados para facilitar a navegação e converter visitantes em clientes."
+    description: "Layouts pensados para facilitar a navegação e converter visitantes em clientes.",
+    color: "#FF696A"
   },
   {
-    icon: <Focus className="w-8 h-8" />,
+    icon: <Focus className="w-6 h-6 md:w-8 md:h-8" />,
     title: "Foco em Conversão e Usabilidade",
-    description: "Design e estrutura voltados para aumentar a taxa de conversão e facilitar a jornada do cliente."
+    description: "Design e estrutura voltados para aumentar a taxa de conversão e facilitar a jornada do cliente.",
+    color: "#FF696A"
   }
 ];
 
 const Diferenciais = () => {
+  const [activeCard, setActiveCard] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Rotação automática dos cards ativos
+  useEffect(() => {
+    if (!isInView) return;
+
+    const interval = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % differentials.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isInView]);
+
+  // Detectar quando a seção está visível
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Efeito de animação para o card ativo no mobile
+  useEffect(() => {
+    if (!isInView) return;
+
+    cardsRef.current.forEach((card, index) => {
+      if (card) {
+        if (index === activeCard) {
+          card.style.transform = 'translateY(0)';
+          card.style.opacity = '1';
+        } else {
+          card.style.transform = 'translateY(10px)';
+          card.style.opacity = '0.6';
+        }
+      }
+    });
+  }, [activeCard, isInView]);
+
   return (
-    <section id="Diferenciais" className="w-full min-h-screen flex items-center px-4 relative bg-arcadia-dark">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 flex items-center justify-center">
+    <section
+      id="Diferenciais"
+      ref={sectionRef}
+      className="w-full min-h-screen flex items-center relative bg-arcadia-dark overflow-hidden py-12 md:py-24"
+    >
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
         <img
           alt="background"
           src="/bg-star.svg"
-          className="object-cover w-3/4 md:w-2/4 absolute top-0 left-2/4 -translate-x-2/4 animate-pulse"
+          className="object-cover w-full h-full absolute top-0 left-0 opacity-50 animate-pulse"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-arcadia-dark to-arcadia-dark/70" />
       </div>
 
-      <div className="container mx-auto px-4 py-12 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Left side - Image placeholder */}
-          <div className="w-full flex justify-center">
-            {/* <img
-              src="/diferenciais/arco-site.png"
-              alt="mascote arco"
-              className="w-full max-w-xs md:max-w-md lg:max-w-lg"
-            /> */}
-            <ReactPlayer
-              width='100%'
-              height='100%'
-              url={"/arco.mp4"}
-              loop
-              muted
-              playing
-              />
-          </div>
-
-          {/* Right side - Differentials */}
-          <div className="space-y-8 text-center md:text-left">
-            <h2 className="text-3xl p-2 mb-8 md:text-5xl md:mb-0 font-bold text-white bg-arcadia-secondary md:px-6 py-3 inline-block">
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Mobile View */}
+        <div className="md:hidden">
+          <div className="text-center mb-8">
+            <h2 className="inline-block text-3xl font-bold text-white bg-arcadia-secondary px-4 py-2 mb-6">
               Nossos Sites Possuem
             </h2>
+            <div className="w-24 h-1 bg-arcadia-primary mx-auto rounded-full"></div>
+          </div>
 
-            <div className="space-y-8">
-              {differentials.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col md:flex-row gap-4 items-center md:items-start group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-arcadia-secondary flex items-center justify-center flex-shrink-0 group-hover:bg-arcadia-primary transition-colors">
-                    <span className="text-arcadia-white">
+          <div className="relative h-72 mb-8">
+            <div className="absolute w-96  inset-0 flex items-center justify-center rounded-lg overflow-hidden">
+              <ReactPlayer
+                width='100%'
+                height='100%'
+                url={"/arco.mp4"}
+                loop
+                muted
+                playing
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {differentials.map((item, index) => (
+              <div
+                key={index}
+                // ref={el => cardsRef.current[index] = el}
+                className={`p-4 rounded-lg transition-all duration-500 ease-in-out cursor-pointer ${activeCard === index ? 'bg-arcadia-dark shadow-lg border border-white/10' : 'opacity-60'}`}
+                style={{
+                  transition: 'all 0.5s ease',
+                  borderLeft: activeCard === index ? `4px solid ${item.color}` : '4px solid transparent'
+                }}
+                onClick={() => setActiveCard(index)}
+              >
+                <div className="flex items-center">
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mr-3"
+                    style={{ backgroundColor: `${item.color}30` }}
+                  >
+                    <span style={{ color: item.color }}>
                       {item.icon}
                     </span>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-white/80 leading-relaxed">
-                      {item.description}
-                    </p>
+                  <h3 className="text-lg font-semibold text-white flex-1">
+                    {item.title}
+                  </h3>
+                  <ChevronRight className={`w-5 h-5 text-white/50 transition-transform ${activeCard === index ? 'rotate-90' : ''}`} />
+                </div>
+
+                <div className={`mt-3 overflow-hidden transition-all duration-500 ${activeCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="text-white/80 text-sm leading-relaxed pl-12">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6 space-x-2">
+            {differentials.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all ${activeCard === index ? 'w-6 bg-arcadia-primary' : 'bg-white/30'}`}
+                onClick={() => setActiveCard(index)}
+                aria-label={`Ver diferencial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop View */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            {/* Left side - Video */}
+            <div className="w-full">
+              <div className="relative overflow-hidden rounded-lg ">
+                <ReactPlayer
+                  width='100%'
+                  height='100%'
+                  url={"/arco.mp4"}
+                  loop
+                  muted
+                  playing
+                />
+              </div>
+            </div>
+
+            {/* Right side - Differentials */}
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
+                <span className="bg-arcadia-secondary px-6 py-3 inline-block">Nossos Sites Possuem</span>
+              </h2>
+
+              <div className="space-y-8">
+                {differentials.map((item, index) => (
+                  <div
+                    key={index}
+                    className="group hover:bg-arcadia-dark/50 p-4 rounded-lg transition-all duration-300 cursor-pointer"
+                    style={{ borderLeft: `4px solid ${item.color}` }}
+                  >
+                    <div className="flex gap-4 items-start">
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors"
+                        style={{ backgroundColor: `${item.color}20` }}
+                      >
+                        <span style={{ color: item.color }}>
+                          {item.icon}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-arcadia-primary transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-white/80 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
                     {index < differentials.length - 1 && (
-                      <div className="border-b border-white/60 mt-6"></div>
+                      <div className="border-b border-white/20 mt-6 group-hover:border-white/10 transition-colors"></div>
                     )}
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

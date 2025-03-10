@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, BriefcaseBusiness } from "lucide-react";
 interface MenuItem {
   id: string;
   label: string;
@@ -109,7 +109,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-arcadia-primary flex-shrink-0" />
-                <span className="text-gray-400">contato@arcadia.com.br</span>
+                <span className="text-gray-400">contato@arcadiacs.com.br</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <BriefcaseBusiness className="w-5 h-5 text-arcadia-primary flex-shrink-0" />
+                <span className="text-gray-400">CNPJ 59.751.591/0001-81</span>
               </li>
             </ul>
           </div>

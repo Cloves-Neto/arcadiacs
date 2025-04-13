@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
               <img
-                src="/public/arcadia-logo.svg"
+                src="/arcadia-logo.svg"
                 alt="Arcadia Logo"
                 className="h-20 w-auto"
               />

@@ -1,6 +1,5 @@
 import { Smartphone, Search, LayoutDashboard, Focus, ChevronRight } from "lucide-react";
 import React, { useState, useEffect, useRef } from 'react';
-import ReactPlayer from 'react-player';
 
 const differentials = [
   {
@@ -34,14 +33,15 @@ const Diferenciais = () => {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Rotação automática dos cards ativos
+  // Rotação mais lenta dos cards ativos (15 segundos em vez de 8)
   useEffect(() => {
     if (!isInView) return;
 
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % differentials.length);
-    }, 8000);
+    }, 15000); // Aumentado de 8000 para 15000
 
     return () => clearInterval(interval);
   }, [isInView]);
@@ -52,7 +52,7 @@ const Diferenciais = () => {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 } // Reduzido para detectar mais cedo
     );
 
     if (sectionRef.current) {
@@ -66,7 +66,7 @@ const Diferenciais = () => {
     };
   }, []);
 
-  // Efeito de animação para o card ativo no mobile
+  // Efeito de animação mais suave para o card ativo
   useEffect(() => {
     if (!isInView) return;
 
@@ -82,6 +82,45 @@ const Diferenciais = () => {
       }
     });
   }, [activeCard, isInView]);
+
+  // Garantir que o vídeo esteja sempre em looping e sem controles
+  useEffect(() => {
+    // Função para iniciar o vídeo corretamente
+    const setupVideo = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        // Configurando atributos essenciais
+        video.setAttribute('playsinline', '');
+        video.setAttribute('loop', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('autoplay', '');
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        
+        // Removendo controles
+        video.controls = false;
+        
+        // Reiniciar o vídeo quando terminar
+        video.onended = function() {
+          video.play()
+            .catch(error => console.log("Auto-play prevented:", error));
+        };
+        
+        // Tentar iniciar o vídeo
+        video.play()
+          .catch(error => console.log("Auto-play prevented:", error));
+      });
+    };
+    
+    // Chamar a função quando o componente montar
+    setupVideo();
+    
+    // E também quando a seção estiver em visualização
+    if (isInView) {
+      setupVideo();
+    }
+  }, [isInView]);
 
   return (
     <section
@@ -109,15 +148,19 @@ const Diferenciais = () => {
             <div className="w-24 h-1 bg-arcadia-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="relative h-72 mb-8">
-            <div className="absolute w-96  inset-0 flex items-center justify-center rounded-lg overflow-hidden">
-              <ReactPlayer
-                width='100%'
-                height='100%'
-                url={"/arco.mp4"}
-                loop
+          <div className="relative aspect-video mb-8 max-w-xs mx-auto">
+            <div className="absolute inset-0 rounded-lg overflow-hidden">
+              {/* Video nativo sem ReactPlayer */}
+              <video
+                ref={videoRef}
+                src="/arco.mp4"
+                className="w-full h-full object-cover"
                 muted
-                playing
+                loop
+                playsInline
+                autoPlay
+                disablePictureInPicture
+                disableRemotePlayback
               />
             </div>
           </div>
@@ -126,10 +169,10 @@ const Diferenciais = () => {
             {differentials.map((item, index) => (
               <div
                 key={index}
-                // ref={el => cardsRef.current[index] = el}
-                className={`p-4 rounded-lg transition-all duration-500 ease-in-out cursor-pointer ${activeCard === index ? 'bg-arcadia-dark shadow-lg border border-white/10' : 'opacity-60'}`}
+                ref={el => cardsRef.current[index] = el}
+                className={`p-4 rounded-lg transition-all duration-700 ease-in-out cursor-pointer ${activeCard === index ? 'bg-arcadia-dark shadow-lg border border-white/10' : 'opacity-60'}`}
                 style={{
-                  transition: 'all 0.5s ease',
+                  transition: 'all 0.7s ease',
                   borderLeft: activeCard === index ? `4px solid ${item.color}` : '4px solid transparent'
                 }}
                 onClick={() => setActiveCard(index)}
@@ -146,10 +189,10 @@ const Diferenciais = () => {
                   <h3 className="text-lg font-semibold text-white flex-1">
                     {item.title}
                   </h3>
-                  <ChevronRight className={`w-5 h-5 text-white/50 transition-transform ${activeCard === index ? 'rotate-90' : ''}`} />
+                  <ChevronRight className={`w-5 h-5 text-white/50 transition-transform duration-500 ${activeCard === index ? 'rotate-90' : ''}`} />
                 </div>
 
-                <div className={`mt-3 overflow-hidden transition-all duration-500 ${activeCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`mt-3 overflow-hidden transition-all duration-700 ${activeCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <p className="text-white/80 text-sm leading-relaxed pl-12">
                     {item.description}
                   </p>
@@ -162,7 +205,7 @@ const Diferenciais = () => {
             {differentials.map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-all ${activeCard === index ? 'w-6 bg-arcadia-primary' : 'bg-white/30'}`}
+                className={`w-2 h-2 rounded-full transition-all duration-500 ${activeCard === index ? 'w-6 bg-arcadia-primary' : 'bg-white/30'}`}
                 onClick={() => setActiveCard(index)}
                 aria-label={`Ver diferencial ${index + 1}`}
               />
@@ -175,14 +218,17 @@ const Diferenciais = () => {
           <div className="grid grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             {/* Left side - Video */}
             <div className="w-full">
-              <div className="relative overflow-hidden rounded-lg ">
-                <ReactPlayer
-                  width='100%'
-                  height='100%'
-                  url={"/arco.mp4"}
-                  loop
+              <div className="relative overflow-hidden rounded-lg aspect-video">
+                {/* Video nativo sem ReactPlayer */}
+                <video
+                  src="/arco.mp4"
+                  className="w-full h-full object-cover"
                   muted
-                  playing
+                  loop
+                  playsInline
+                  autoPlay
+                  disablePictureInPicture
+                  disableRemotePlayback
                 />
               </div>
             </div>
@@ -197,12 +243,13 @@ const Diferenciais = () => {
                 {differentials.map((item, index) => (
                   <div
                     key={index}
-                    className="group hover:bg-arcadia-dark/50 p-4 rounded-lg transition-all duration-300 cursor-pointer"
+                    className="group hover:bg-arcadia-dark/50 p-4 rounded-lg transition-all duration-500 cursor-pointer"
                     style={{ borderLeft: `4px solid ${item.color}` }}
+                    onClick={() => setActiveCard(index)}
                   >
                     <div className="flex gap-4 items-start">
                       <div
-                        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors"
+                        className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-500"
                         style={{ backgroundColor: `${item.color}20` }}
                       >
                         <span style={{ color: item.color }}>
@@ -210,7 +257,7 @@ const Diferenciais = () => {
                         </span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-arcadia-primary transition-colors">
+                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-arcadia-primary transition-colors duration-500">
                           {item.title}
                         </h3>
                         <p className="text-white/80 leading-relaxed">
@@ -219,7 +266,7 @@ const Diferenciais = () => {
                       </div>
                     </div>
                     {index < differentials.length - 1 && (
-                      <div className="border-b border-white/20 mt-6 group-hover:border-white/10 transition-colors"></div>
+                      <div className="border-b border-white/20 mt-6 group-hover:border-white/10 transition-colors duration-500"></div>
                     )}
                   </div>
                 ))}

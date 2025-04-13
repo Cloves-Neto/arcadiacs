@@ -85,41 +85,78 @@ const Diferenciais = () => {
 
   // Garantir que o vídeo esteja sempre em looping e sem controles
   useEffect(() => {
-    // Função para iniciar o vídeo corretamente
-    const setupVideo = () => {
+    // Função para iniciar e configurar o vídeo corretamente
+    const setupVideos = () => {
       const videos = document.querySelectorAll('video');
       videos.forEach(video => {
-        // Configurando atributos essenciais
+        // Atributos iOS específicos
         video.setAttribute('playsinline', '');
-        video.setAttribute('loop', '');
+        video.setAttribute('webkit-playsinline', '');
         video.setAttribute('muted', '');
         video.setAttribute('autoplay', '');
+        video.setAttribute('loop', '');
+        
+        // Configurações via JavaScript
         video.muted = true;
+        video.defaultMuted = true;
+        video.autoplay = true;
         video.loop = true;
+        video.controls = false;
         video.playsInline = true;
         
-        // Removendo controles
-        video.controls = false;
-        
-        // Reiniciar o vídeo quando terminar
-        video.onended = function() {
-          video.play()
-            .catch(error => console.log("Auto-play prevented:", error));
+        // Forçar o play e lidar com possíveis erros
+        const playVideo = () => {
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                // Play iniciado com sucesso
+              })
+              .catch(error => {
+                // Auto-play foi bloqueado, talvez devido a políticas do navegador
+                console.log("Auto-play foi impedido:", error);
+                
+                // Tentar novamente após interação do usuário
+                document.addEventListener('touchstart', () => {
+                  video.play();
+                }, { once: true });
+              });
+          }
         };
         
-        // Tentar iniciar o vídeo
-        video.play()
-          .catch(error => console.log("Auto-play prevented:", error));
+        // Evento de carregamento completo do vídeo
+        video.addEventListener('loadeddata', playVideo);
+        
+        // Manipulador para quando o vídeo terminar (fallback para loop)
+        video.addEventListener('ended', playVideo);
+        
+        // Iniciar o vídeo imediatamente
+        playVideo();
       });
     };
     
-    // Chamar a função quando o componente montar
-    setupVideo();
+    // Configurar vídeo quando o componente montar
+    setupVideos();
     
     // E também quando a seção estiver em visualização
     if (isInView) {
-      setupVideo();
+      setupVideos();
     }
+    
+    // Adicionar um ouvinte de visibilidade para garantir que o vídeo continue rodando
+    // quando o usuário retorna à aba/aplicativo
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setupVideos();
+      }
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Limpeza
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, [isInView]);
 
   return (
@@ -148,19 +185,21 @@ const Diferenciais = () => {
             <div className="w-24 h-1 bg-arcadia-primary mx-auto rounded-full"></div>
           </div>
 
-          <div className="relative aspect-video mb-8 max-w-xs mx-auto">
-            <div className="absolute inset-0 rounded-lg overflow-hidden">
-              {/* Video nativo sem ReactPlayer */}
+          {/* Container do vídeo - Vídeo em orientação vertical */}
+          <div className="mb-10 mx-auto max-w-[280px]">
+            <div className="aspect-[9/16] rounded-lg overflow-hidden bg-black/20 relative">
               <video
                 ref={videoRef}
+                className="absolute inset-0 w-full h-full object-cover"
                 src="/arco.mp4"
-                className="w-full h-full object-cover"
                 muted
                 loop
                 playsInline
+                webkit-playsinline="true"
                 autoPlay
-                disablePictureInPicture
-                disableRemotePlayback
+                preload="auto"
+                disablePictureInPicture="true"
+                x-webkit-airplay="deny"
               />
             </div>
           </div>
@@ -216,20 +255,23 @@ const Diferenciais = () => {
         {/* Desktop View */}
         <div className="hidden md:block">
           <div className="grid grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            {/* Left side - Video */}
+            {/* Left side - Video (desktop permanece em landscape) */}
             <div className="w-full">
-              <div className="relative overflow-hidden rounded-lg aspect-video">
-                {/* Video nativo sem ReactPlayer */}
-                <video
-                  src="/arco.mp4"
-                  className="w-full h-full object-cover"
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  disablePictureInPicture
-                  disableRemotePlayback
-                />
+              <div className="relative rounded-lg overflow-hidden bg-black/20">
+                <div className="aspect-[9/16] max-w-[360px] mx-auto">
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src="/arco.mp4"
+                    muted
+                    loop
+                    playsInline
+                    webkit-playsinline="true"
+                    autoPlay
+                    preload="auto"
+                    disablePictureInPicture="true"
+                    x-webkit-airplay="deny"
+                  />
+                </div>
               </div>
             </div>
 

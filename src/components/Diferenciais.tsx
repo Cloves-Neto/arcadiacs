@@ -41,7 +41,7 @@ const Diferenciais = () => {
 
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % differentials.length);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [isInView]);
